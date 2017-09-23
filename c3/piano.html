@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .nav ul{
+            margin:300px 200px;
+            padding:0px;
+            list-style-type: none;
+        }
+        .nav li{
+            float:left;
+            height: 35px;
+            width: 100px;
+            border:2px solid #ccc;
+            position:relative;
+            font-size: 25px;
+            line-height: 35px;
+            text-align: center;
+        }
+        ins{
+            position:absolute;
+            top:35px;
+            left:0px;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: pink;
+        }
+    </style>
+    <script src="../jquery-1.11.2.js"></script>
+    <script>
+        $(document).ready(function(){
+                //添加小盒子
+                $(".nav li").append("<ins></ins>");
+                var color=new Array("red","yellow","blue","green","pink","orange","purple","black");
+                $("ul li ins").each(function(index,ele){
+                    $(this).css("background-color",color[index]);
+                })
+               //事件
+               $(".nav li").mouseenter(function(){
+                   $(this).children("ins").stop().animate({top:0},200);
+                   $("audio").get($(this).index()).load();
+                   $("audio").get($(this).index()).play();
+               }).mouseleave(function(){
+                   $(this).children("ins").stop().animate({top:35},200);
+               });
+              //键盘事件
+               var num=0;
+               $(window).keydown(function(event){
+
+                   if(event.keyCode>=97&& event.keyCode<=104){
+                       num=event.keyCode-97;
+                       $(".nav li").eq(num).trigger("mouseenter");
+                       setTimeout(function(){
+                           $(".nav li").eq(num).trigger("mouseleave");
+                       },300);
+                   }
+               })
+        })
+    </script>
+</head>
+<body>
+<div class="nav">
+    <ul>
+        <li>do</li>
+        <li>re</li>
+        <li>mi</li>
+        <li>fa</li>
+        <li>so</li>
+        <li>la</li>
+        <li>xi</li>
+        <li>d!</li>
+    </ul>
+</div>
+<audio src="#"></audio>
+<audio src="#"></audio>
+<audio src="#"></audio>
+<audio src="#"></audio>
+<audio src="#"></audio>
+<audio src="#"></audio>
+<audio src="#"></audio>
+<audio src="#"></audio>
+</body>
+</html>

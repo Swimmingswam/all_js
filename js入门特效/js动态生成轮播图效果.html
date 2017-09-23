@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        ol,ul{
+            list-sytle:none;
+        }
+        .box{
+            width: 290px;
+            height: 184px;
+            overflow:hidden;
+            margin:100px auto;
+            position:relative;
+        }
+        .circle{
+            position:absolute;
+            bottom:10px;
+            left:50%;
+            margin-left:-50px;
+        }
+        .circle span{
+            float:left;
+            width:15px;
+            height:15px;
+            line-height:15px;
+            margin-right:8px;
+            background-color:pink;
+            border-radius:50%;
+            cursor:pointer;
+            text-align:center;
+        }
+        .circle span.current{
+            background-color: purple;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box=document.getElementById("box");
+            var circle=document.createElement("div");
+            //circle.className="circle";
+            circle.setAttribute("class","circle");
+            box.appendChild(circle);
+            var ul=document.getElementById("ul");
+            var lis=ul.children;
+            //alert(lis.length);
+            for(var i=0;i<lis.length;i++){
+                var spans=document.createElement("span");
+                spans.innerHTML=i+1;
+                circle.appendChild(spans);
+            }
+            var child=circle.children;
+            child[0].setAttribute("class","current");
+
+
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="sliver">
+        <ul id="ul">
+            <li><img src="./images/148972260233130128.jpg"></li>
+            <li><img src="./images/148972286370958521.jpg"></li>
+            <li><img src="./images/148973161922274417.jpg"></li>
+            <li><img src="./images/148974061577356798.jpg"></li>
+        </ul>
+    </div>
+    <!--<div class="circle">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>-->
+</div>
+</body>
+</html>

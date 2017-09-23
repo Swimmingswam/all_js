@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            background-color:pink;
+            width: 100px;
+            height: 100px;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+<div></div>
+<div id="damo"></div>
+<div class="one"></div>
+<div class="one"></div>
+<div class="one"></div>
+<div></div>
+<div class="two"></div>
+<div></div>
+</body>
+</html>
+<script>
+    function $(str){
+        var ss=str.charAt(0);
+        var s=str.substr(1);
+        switch(ss){
+            case "#":
+                return document.getElementById(s);
+            break;
+            case ".":
+                return getclassname(s);
+            break;
+            default:
+                return document.getElementsByTagName(str);
+        }
+    }
+    function getclassname(classname){
+        if(document.getElementsByClassName) {
+            return document.getElementsByClassName(classname);
+        }
+        var arr=[];
+        var all=document.getElementsByTagName("*");
+        for(var i=0;i<all.length;i++){
+            var txtarr=all[i].className.split(" ");
+            for(var j=0;j<txtarr.length;j++){
+                if(txtarr[j]==classname){
+                    arr.push(txtarr[j]);
+                }
+            }
+        }
+        return arr;
+    }
+    $("#demo").style.backgroundColor="red";
+    $("#damo").style.backgroundColor="yellow";
+    var test=$(".one");
+     for(var i=0;i<test.length;i++)
+     {
+       test[i].style.backgroundColor="purple";
+     }
+</script>

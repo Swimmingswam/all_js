@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #jieqi{
+            width: 658px;
+            height: 500px;
+            overflow:hidden;
+            margin:100px auto;
+            border:1px solid #f00;
+            position:relative;
+        }
+        span{
+            position:absolute;
+            left:0;
+            height:250px;
+            width:100%;
+            cursor:pointer;
+        }
+        #picup{
+            top:0px;
+        }
+        #picdown{
+            bottom:0px;
+        }
+        #pic{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="jieqi">
+    <img src="./images/24.jpg" alt="" id="pic"/>
+    <span id="picup"></span>
+    <span id="picdown"></span>
+</div>
+</body>
+</html>
+<script>
+    function $(id){return document.getElementById(id);}
+    var num=0;
+    var timer=null;
+    $("picup").onmouseover=function() {
+        clearInterval(timer);
+      timer=setInterval(slider, 50)
+        function slider() {
+            num -= 3;
+            num>=-569? $("pic").style.top = num + "px" : clearInterval(timer);
+            /*if (num >=-569) {
+                console.log(num);
+                $("pic").style.top = num + "px";
+            }
+            else{
+                clearInterval(timer);
+            }*/
+        }
+    }
+    $("picdown").onmouseover=function() {
+        clearInterval(timer);
+        timer=setInterval(slider2, 50)
+        function slider2() {
+            num +=2;
+            num<0? $("pic").style.top = num + "px" : clearInterval(timer);
+            /* if (num<0) {
+                console.log(num);
+                $("pic").style.top = num + "px";
+            }
+            else{
+                clearInterval(timer);
+            }*/
+        }
+    }
+    $("jieqi").onmouseout=function(){
+        clearInterval(timer);
+    }
+</script>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+   #demo{
+   width:290px;
+   height:184px;
+   border:0px;
+   margin:50% 50%;
+   }
+   #one strong,#two strong,#three strong{
+    font-size:10px;
+	display:inline-block;
+	float:left;
+	width:15px;
+	height:15px;
+	line-height:15px;
+	margin:5px;
+   }
+
+
+  </style>
+ </head>
+ <body>
+  <div id="demo">
+  <img src="./images/148972260233130128.jpg">
+  </div>
+  <div id="one"><strong>1</strong></div>
+  <div id="two"><strong>2</strong></div>
+  <div id="three"><strong>3</strong></div>
+ </body>
+</html>

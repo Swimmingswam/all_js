@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .top{
+            width:100%;
+            height:60px;
+            background-color: #fff;
+            border-bottom:1px;
+            border:1px solid #ccc;
+            padding:5px 0px;
+            line-height: 36px;
+        }
+        .right{
+            list-style:none;
+            display:inline-block;
+            float:right;
+          }
+        .right li{
+            margin:5px 8px;
+            float:left;
+        }
+        input{
+            margin-left: 10px;
+            height:36px;
+            width:550px
+        }
+        button{
+            margin-left:-10px;
+            height:40px;
+            width:110px;
+        }
+        .sou{
+            display:inline-block;
+        }
+        span{
+            margin:5px;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function(){
+            var topheight=$(".top").height();
+            $(window).scroll(function() {
+                var docscrolltop = $(document).scrollTop();
+                if (docscrolltop >= topheight) {
+                    $(".top").css({
+                        "position": "fixed",
+                        "top": 0
+                    });
+                    $(".main").css("margin-top", $(".top").height());
+                }
+                /*else {
+                    $(".top").css({
+                        "position": "static"
+                    });
+                    $(".main").css("margin-top", 0);
+                }//此部分要不要都可以？*/
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="top">
+    <span><img src="./images/baidu.png"></span>
+    <div class="sou">
+    <input type="text"/>
+    <button>百度一下</button>
+    </div>
+    <div class="right">
+        <li><a href="#">百度首页</a></li>
+        <li><a href="#">消息</a></li>
+        <li><a href="#">设置</a></li>
+        <li><a href="#">134*****945</a></li>
+    </div>
+</div>
+<div class="main">
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+    <p>hello world</p>
+</div>
+
+</body>
+</html>

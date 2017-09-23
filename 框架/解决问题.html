@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            background: red;
+            margin:10px
+        }
+    </style>
+</head>
+<body>
+<button id="button">点击我</button>
+<img class="image" src="../test.png">
+<img class="image" src="../test.png">
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+<div class='div'></div>
+</body>
+</html>
+<script>
+    var itcast =function(context,id){
+        this.elements = [];
+        context = context || document;
+        this.elements = context.querySelectorAll(id);
+    }
+    itcast.prototype={
+        show:function (){
+            for(var i=0;i<this.elements.length;i++){
+                this.elements[i].style.display = 'block'
+            }
+            return this;
+        },
+        hide:function (){
+            for(var i=0;i<this.length;i++){
+                this[i].style.display = 'none'
+            }
+            return this;
+        },
+        css:function(key, value){
+            var doms = this.elements
+            if(doms.length){
+                if(value){
+                    for(var i = doms.length - 1; i >= 0; i--){
+                        setStyle(doms[i],key, value);
+                    }
+                }else{
+                    return getStyle(doms[0]);
+                }
+            }else{
+                if(value){
+                    setStyle(dom,key, value);
+                }else{
+                    return getStyle(dom);
+                }
+            }
+            function getStyle(dom){
+                if(dom.currentStyle){
+                    return dom.currentStyle[key];
+                }else{
+                    return getComputedStyle(dom,null)[key];
+                }
+            }
+            function setStyle(dom,key,value){
+                dom.style[key] = value;
+            }
+        },
+    }
+    var $ = function(id) {
+        return new itcast(document,id);
+    };
+    var btn = document.getElementById('button')
+    btn.onclick =function(){
+        $('.div').hide().show().css('background','yellow')
+    }
+</script>

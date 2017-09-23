@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./封装框架.js"></script>
+    <style>
+        .react{
+            height: 100px;
+            width: 400px;
+            margin:10px;
+        }
+        .c{
+            border:1px solid red;
+        }
+        .c1{
+            border:1px solid green;
+        }
+        .c2{
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div class="c3">
+    <div class="c1 react"></div>
+    <div class="c2 react">
+        <div  class="c" style="border:1px dashed blue">123</div>
+    </div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+<hr />
+<div>
+    <div class="c1 react"></div>
+    <div class="c2 react"></div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+</body>
+<script>
+    //select(".c1 .c2 .c3 .c4,.c")
+    //我的写法
+    function select(selector,context,results){
+        results=results||[];
+        var selectors=selector.split(",");  //[".c1 .c2 .c3 .c4",".c"]
+        each(selectors,function(i,v){    //v1=".c1 .c2 .c3 .c4"    v2=".c"
+            var vs= v.split(" ");
+            //var c=context;                   //vs1=[".c1",".c2",".c3",".c4"]    vs2=[".c"]
+           /* each(vs,function(i,v){  //vs11=".c1"
+                //if(v===" ") continue;
+                c=get(v,c);                             此处再用v,c不行？明明两个each的作用域不一样啊！！！
+            })*/
+            for(var i=0;i<vs.length;i++){  //vs11=".c1"
+                if(vs[i]===" ") continue;
+                context=get(vs[i],context);
+            }
+            results.push.apply(results,context);
+        })
+        return results;
+    }
+    //视频写法
+    function select(selector,context,results){
+        results=results||[];
+        var selectors=selector.split(",");  //[".c1 .c2 .c3 .c4",".c"]
+        each(selectors,function(i,v){    //v1=".c1 .c2 .c3 .c4"    v2=".c"
+            var vs= v.split(" ");
+            var c=context;                   //vs1=[".c1",".c2",".c3",".c4"]    vs2=[".c"]
+            for(var i=0;i<vs.length;i++){  //vs11=".c1"
+                if(vs[i]===" ") continue;
+                c=get(vs[i],c);
+            }
+            results.push.apply(results,c);
+        })
+        return results;
+    }
+</script>
+<script>
+    each(select(".c3 .c"),function(){
+        this.style.backgroundColor="yellow";
+    })
+</script>
+</html>
+<!--最终两种写法都不能解决select(".c3        .c")，中间多个空格问题？-->

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            margin:50px;
+        }
+        #box{
+            position:relative;
+        }
+        #box div{
+            position:absolute;
+            border:1px solid #ccc;
+        }
+        #box .left{
+            left:0px;
+            top:40px;
+        }
+        #box .right{
+            right:0px;
+            top:40px;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function(){
+            $(window).scroll(function(){
+                var docscrolltop=$(document).scrollTop();
+                $("#box").animate({"top":docscrolltop+40},60);
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="box">
+<div class="left"><img src="./images/biao.jpg"></div>
+<div class="right"><img src="./images/biao.jpg"></div>
+</div>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="demo">
+
+</div>
+</body>
+</html>
+<script>
+  var demo=document.getElementById("demo");
+  var count=5;
+  setTimeout(goBack,1000)
+    function goBack() {
+      demo.innerHTML = "<a href='http://www.baidu.com'>页面将在" + count + "秒钟后跳转回首页</a>";
+      count--;
+      if (count <= 0) {
+        window.location.href = "http://www.baidu.com";
+      }
+      else {
+        setTimeout(goBack, 1000);
+      }
+    }
+
+</script>

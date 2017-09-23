@@ -1,0 +1,8 @@
+<?php
+$username=$_GET["username"];
+$password=$_GET["password"];
+
+echo"ÓÃ»§Ãû:".$username."ÃÜÂë:".$password;
+
+
+?>

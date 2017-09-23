@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var txt="we are 中山人";
+    console.log(txt.length);
+    function test(str){
+        var c=0;
+        var len=0;
+        for(var i= 0;i<str.length;i++){
+            c=str.charCodeAt(i);
+            if(c>=0&&c<=127){
+                len++;
+            }
+            else{
+                len+=2;
+            }
+        }
+        return len;
+    }
+    console.log(test(txt));
+</script>
+</body>
+</html>

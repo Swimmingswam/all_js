@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            text-align: center;
+        }
+        .box{
+            display:flex;
+        }
+        .web{
+            width: 600px;
+            height: 600px;
+            margin:auto;
+            display:flex;
+            flex-direction: column;
+        }
+        .head{
+            height: 50px;
+            line-height: 50px;
+            background-color: green;
+        }
+        .main{
+            flex:1;
+            display:flex;
+        }
+        .left{
+            width: 300px;
+            background-color: red;
+            display:flex;
+            align-items:center;
+        }
+        .left ul{
+            flex:1;
+            display:flex;
+           flex-direction: column;
+            list-style: none;
+            margin:  0px;
+            padding:0px;
+            height: 200px;
+        }
+        .left ul li{
+            flex:1;
+            background-color: white;
+            border:1px solid;
+        }
+        .right{
+            background-color: yellow;
+            flex:1;
+            display:flex;
+            flex-wrap: wrap;
+            /*align-content:flex-start;*/
+        }
+        .right .content{
+            width: 90px;
+            width: 90px;
+            background-color: gray;
+            margin:5px;
+        }
+        .foot{
+            background-color: blue;
+            height: 50px;
+            display:flex;
+        }
+        .foot ul{
+            flex:1;
+            display:flex;
+            margin:0px;
+            padding:0px;
+            list-style: none;
+        }
+        .foot ul li{
+            flex:1;
+            background-color: pink;
+            border:1px solid;
+            line-height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="web">
+        <div class="head">头部内容</div>
+        <div class="main">
+            <div class="left">
+                <ul>
+                    <li>商品分类</li>
+                    <li>我的订单</li>
+                    <li>购物车</li>
+                    <li>我的账户</li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+                <div class="content"></div>
+
+            </div>
+        </div>
+        <div class="foot">
+            <ul>
+                <li>商品分类</li>
+                <li>我的订单</li>
+                <li>购物车</li>
+                <li>我的账户</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

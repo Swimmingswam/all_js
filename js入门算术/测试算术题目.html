@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            color:#ccc;
+        }
+        #result{
+            margin:5px;
+            padding:3px 10px;
+            font-size:12px;
+            color:#000;
+            background-color: #ccc;
+            border:1px solid #acffac;
+        }
+        .right{
+            color:#5eff5e;
+            background-color: #dfffdf;
+            border:1px solid #acffac;
+        }
+        .wrong{
+            background-color: #ffdcd0;
+            borer:1px solid #ffac91;
+            color:#ff6b39;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            $("btn").onclick = function () {
+                if ($("answer").value == 77) {
+                    alert("恭喜，回答正确！");
+                }
+                /*else if($(answer).value >>77) {
+                    alert("抱歉，答案大了~请再算一遍");
+                }*/
+                else{
+                    alert("抱歉，答案错误^_^!请再算一遍");
+                }
+            }
+            $("answer").onfocus= function() {
+                if (this.value == "请输入您的答案") {
+                    this.value = "";
+                    this.style.color = "#000";
+
+                }
+                /*$("answer").onblur = function () {
+                    if (this.value == "") {
+                        this.value = "请输入您的答案";
+                        this.style.color = "#ccc";
+                    }
+                }*/
+                $("answer").onblur = function () {
+                    if (this.value == "") {
+                        $("result").className = "wrong";
+                        $("result").innerHTML = "内容不能为空";
+                    }
+                    else if (isNaN(this.value)) {
+                        $("result").className = "wrong";
+                        $("result").innerHTML = "请输入数字";
+                    }
+                    else if (this.value < 0) {
+                        $("result").className = "wrong";
+                        $("result").innerHTML = "请输入正数";
+                    }
+                }
+            }
+        }
+    </script
+            >
+</head>
+<body>
+<p>请将算术题目答案输入检验框。</p>
+var a =10;<br />
+var b =20;<br />
+var c =30;<br />
+++a;<br />
+a++;<br />
+var e =(++a)+(++b)+(c++)+(a++);<br />
+alert(e);<br />
+<input type="text" value="请输入您的答案" id="answer"/ ><span id="result">请您正确回答</span><br />
+<button id="btn">检验</button>
+</body>
+</html>

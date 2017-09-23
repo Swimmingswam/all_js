@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").css({
+                "background":"gold",
+                "width":"200px",
+                "height":"200px",
+                "display":"none"
+            });
+            $("button").eq(0).click(function(){
+                $("div").show(1000,function(){
+                        alert("that is ok");
+                        });
+            });
+            $("button:last").click(function(){
+                $("div").hide(2000,function(){
+                  $("div").show(5000);
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+<button>显示</button>
+<button>隐藏</button>
+<div></div>
+</body>
+</html>

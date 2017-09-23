@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div").css({
+                "background":"gold",
+                "width":"200px",
+                "height":"200px",
+                "display":"none",
+                "margin":"50px",
+                "float":"left"
+            });
+            $("button:first").click(function(){
+                $("div:first").slideDown(1000,"swing");
+            });
+            $("button:first").click(function(){
+                $("div:last").slideDown(1000,"linear");
+            });
+            $("button").eq(1).click(function(){
+                $("div:first").slideUp(1000,"swing");
+            });
+            $("button").eq(1).click(function(){
+                $("div:last").slideUp(1000,"linear");
+            });
+            $("button:last").click(function(){
+                $("div:first").slideToggle(1000,function(){
+                });
+            });
+            $("button:last").click(function(){
+                $("div:last").slideToggle(1000,function(){
+                    alert("i am ok !");
+                });
+
+            });
+        })
+    </script>
+</head>
+<button>下拉</button>
+<button>上收</button>
+<button>上下拉切换</button><br />
+<div></div>
+<div></div>
+</body>
+</html>

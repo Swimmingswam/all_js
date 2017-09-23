@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./封装框架.js"></script>
+    <style>
+        .react{
+            height: 100px;
+            width: 400px;
+            margin:10px;
+        }
+        .c{
+            border:1px solid red;
+        }
+        .c1{
+            border:1px solid green;
+        }
+        .c2{
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div class="c3">
+    <div class="c1 react"></div>
+    <div class="c2 react"></div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+<hr />
+<div>
+    <div class="c1 react"></div>
+    <div class="c2 react"></div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+</body>
+<script>
+    function mytrim(str){
+        if(String.trim){
+            return str.trim();
+        }else{
+            return str.replace(/^\s+|\s+$/g,"");
+        }
+    };
+    function select(selector,context,results){
+        results=results||[];
+        var selectors=selector.split(",");
+        each(selectors,function(i,v){
+            results.push.apply(results,get(mytrim(v),context));
+        })
+        return results;
+    }
+    each(select(".c2,.c"),function(){
+        this.style.backgroundColor="red";
+    })
+</script>
+</html>

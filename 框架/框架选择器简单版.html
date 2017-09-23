@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./封装框架.js"></script>
+    <style>
+        .react{
+            height: 100px;
+            width: 400px;
+            margin:10px;
+        }
+        .c{
+            border:1px solid red;
+        }
+        .c1{
+            border:1px solid green;
+        }
+        .c2{
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div class="c3">
+    <div class="c1 react"></div>
+    <div class="c2 react">
+        <div  class="c" style="border:1px dashed blue">123</div>
+    </div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+<hr />
+<div>
+    <div class="c1 react"></div>
+    <div class="c2 react"></div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+</body>
+<script>
+    //我的写法
+    function select(selector){
+        var selectors=selector.split(",");
+        var list;
+        var res;
+        var results=[];
+        each(selectors,function(i,v){
+            list=v.split(" ");
+            each(list,function(i,v){
+                res=get(list[i],res);
+            })
+            results.push.apply(results,res);
+        })
+        return results;
+    }
+    //视频写法
+    /*function select(selector){
+        var selectors=selector.split(",");
+        var results=[];
+        for(var i =0;i<selectors.length;i++){
+            var singleselector=selectors[i];
+            var subselectors=singleselector.split(" ");
+            var res;
+            for(var j =0;j<subselectors.length;j++){
+                var s=subselectors[j];
+                res=get(s,res);
+            }
+            results.push.apply(results,res);
+        }
+        return results;
+    }*/
+    var a=select(".c3 .c,.c1");                     //为何两种方法都是逗号后面的选择器不起作用？
+    each(a,function(){
+        this.style.backgroundColor="green";}
+    )
+</script>
+</html>

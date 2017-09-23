@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #tu{
+            background-image:url(./images/148972260233130128.jpg);
+            height:184px;
+            width: 290px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box=document.getElementById("box");
+            var tu=document.getElementById("tu");
+            box.onchange=function(){
+                switch(this.value){
+                    case "1":tu.style.backgroundImage="url(./images/148972260233130128.jpg)";break;
+                    case "2":tu.style.backgroundImage="url(./images/148972286370958521.jpg)";break;
+                    case "3":tu.style.backgroundImage="url(./images/148973161922274417.jpg)";break;
+                    case "4":tu.style.backgroundImage="url(./images/148974061577356798.jpg)";break;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<select name="" id="box">
+    <option value="1">电动牙刷</option>
+    <option value="2">化妆品</option>
+    <option value="3">电饭煲</option>
+    <option value="4">手机</option>
+</select>
+<div id="tu">
+
+</div>
+</body>
+</html>

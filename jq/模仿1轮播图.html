@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0px;padding:0px;}
+        ul li{
+            list-style: none;
+            float:left;
+        }
+        #middle img{
+        width: 1500px;
+        height: 400px;
+        }
+        #big,#box{
+            width: 100%;
+            height: 400px;
+            position:relative;
+        }
+        #small{
+            width: 110px;
+            height: 20px;
+            position:absolute;
+            bottom:10px;
+            right:330px;
+            background-color: #ccc;
+            border-radius:11px;
+            padding-left:5px;
+        }
+        #small li{
+            margin:2px;
+            cursor: pointer;
+            display:inline-block;
+            width: 16px;
+            height: 16px;
+            background:url(./images/1/1.png) no-repeat;
+        }
+        #box{
+            overflow:hidden;
+            position:relative;
+        }
+        #middle{
+            width:7500px;
+            position:absolute;
+            background-color: yellow;
+            left:0;
+        }
+        current
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        var liindex=0;
+        var num=0;
+        var timer=null;
+        $(function(){
+            $("#small li").on("mouseenter",function(){
+                liindex=$(this).index();
+                $("#middle").animate({"left":liindex*-1500+"px"},1000)
+                $("#small li").eq(liindex).css("background","url(./images/1/2.png)")
+                        .siblings().css("background","url(./images/1/1.png)")
+                num=$("#middle").css("left");
+                console.log(num);
+            })
+            if(num<=-7500){
+                clearInterval(timer);
+                $("#small li").off("mouseenter");
+            }
+            timer=setInterval(function(){
+                liindex+=1;
+                $("#middle").animate({"left":liindex*-1500+"px"},1000)
+                $("#small li").eq(liindex).css("background","url(./images/1/2.png)")
+                        .siblings().css("background","url(./images/1/1.png)")
+            },2000)
+        })
+    </script>
+</head>
+<body>
+<div id="big">
+    <div id="box">
+       <ul id="middle">
+         <li><img src="./images/1/11.jpg"></li>
+         <li><img src="./images/1/12.jpg"></li>
+         <li><img src="./images/1/13.jpg"></li>
+         <li><img src="./images/1/14.jpg"></li>
+         <li><img src="./images/1/15.jpg"></li>
+       </ul>
+    </div>
+    <ul id="small">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

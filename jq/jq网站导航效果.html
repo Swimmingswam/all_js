@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{list-style: none;
+           overflow:hidden;
+        }
+        div{
+            width:748px;
+            height:255px;
+            border:1px solid #ccc;
+            margin:100px auto;
+
+        }
+        li {
+            width: 239px;
+            height: 117px;
+            margin: 5px;
+            /*background-color: yellow;*/
+            float: left;
+            position: relative;
+        }
+        span{
+            background-color: #000;
+            position:absolute;
+            left:0px;
+            bottom:-22px;
+            display:inline-block;
+            width:239px;
+            color:#fff;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("li")
+                    .append("<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspgoogle 爱上搜索引擎</span>")
+                    .children("span")
+                    .fadeTo(500,0.8)
+            $("li").mouseenter(function(){
+                $(this).children("span").stop().animate({
+                    "bottom":0
+                },400);
+            }).mouseleave(function(){
+                $(this).children("span").stop().animate({
+                    "bottom":"-22px"
+                },400)})
+        })
+
+    </script>
+</head>
+<body>
+    <div>
+        <li>
+            <a href="http://www.163.com"><img src="./images/timg_06.gif"></a>
+           <!--<span>google 爱上搜索引擎</span>-->
+        </li>
+        <li><a href="http://www.taobao.com"><img src="./images/timg_02.gif"></a></li>
+        <li><a href="http://www.dangdang.com"><img src="./images/timg_03.gif"></a></li>
+        <li><a href="http://www.dangdang.com"><img src="./images/timg_03.gif"></a></li>
+        <li><a href="http://www.sina.com.cn"><img src="./images/timg_05.gif"></a></li>
+        <li><a href="http://www.163.com"><img src="./images/timg_06.gif"></a></li>
+    </div>
+</body>
+</html>

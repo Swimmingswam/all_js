@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1 id="name">product name</h1>
+<h2 id="pres">product prescription</h2>
+<div id="price">product price</div>
+</body>
+<script>
+    //构造器
+    function product(){
+        this.name='iphone5s';
+        this.prescription='gold';
+        this.price=5000;
+        this.picture=[];
+    }
+    product.prototype={
+        buy:function(){},
+        getdetail:function(){},
+        comment:function(){},
+        binddom:function(){},
+        bindevent:function(){}
+    }
+    //获取元素
+    var pname=document.getElementById("name");
+    var ppres=document.getElementById("pres");
+    var pprice=document.getElementById("price");
+    //对象实例化
+    var iphone16g=new product();
+    iphone16g.name="iphone5s";
+    iphone16g.prescription="gold yello";
+    iphone16g.price="5000 dollar";
+   //绑定元素
+    window.onload=function(){
+    pname.innerHTML=iphone16g.name;
+    ppres.innerHTML=iphone16g.prescription;
+    pprice.innerHTML=iphone16g.price;
+    //绑定事件
+    }
+</script>
+</html>

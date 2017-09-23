@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>zhoubian</title>
+</head>
+<body>
+<table>
+<tr>
+<td><img src="\Users\acer\Desktop\js练习\我的博客"></td>
+<td colspan="4"></td>
+<td><img src="\Users\acer\Desktop\js练习\我的博客"></td>
+</tr>
+<tr rowspan="4">
+<td></td>
+<td colspan="4"><img src="C:\Users\acer\Desktop\js练习\我的博客\周边.jpg" width=400 height=400></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="\Users\acer\Desktop\js练习\我的博客"></td>
+<td colspan="4"></td>
+<td><img src="\Users\acer\Desktop\js练习\我的博客"></td>
+</tr>
+</table>
+</html>

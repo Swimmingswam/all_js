@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .demo{
+            width:290px;
+            height:184px;
+            border:2px;
+            padding:5px;
+            margin:30px 40%;
+        }
+        #demo1 {
+            background: url(./images/148972286370958521.jpg);
+        }
+        #demo2{
+            background:url(./images/148973161922274417.jpg);
+            display:none;
+        }
+        #demo3{
+            background:url(./images/148974061577356798.jpg);
+            display:none;
+        }
+        .xuhao{
+            position:absolute;
+            top:200px;
+            left:660px;
+        }
+        .one{
+            font-size:15px;
+            display:inline-block;
+            float:left;
+            width:25px;
+            height:25px;
+            line-height:25px;
+            margin:3px;
+        }
+        .active{
+            color:red;
+        }
+        .show{
+            display:block;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".one").mouseenter(function(){
+                $(this).addClass("active")
+                       .siblings().removeClass("active");
+                var index =$(this).index();
+                $(".demo")
+                        .eq(index)
+                        .addClass("show")
+                        .siblings(".demo")
+                        .removeClass("show");
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="demo" id="demo1"></div>
+<div class="demo" id="demo2"></div>
+<div class="demo" id="demo3"></div>
+<div class="xuhao">
+    <div class="one" id="one"><strong>1</strong></div>
+    <div class="one" id="two"><strong>2</strong></div>
+    <div class="one" id="three"><strong>3</strong></div>
+</div>
+</body>
+</html>

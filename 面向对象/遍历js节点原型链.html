@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .dv{
+            border:1px solid red;
+            width: 200px;
+            height:150px;
+            margin:5px;
+            padding:2px;
+            float:left;
+        }
+    </style>
+    <script>
+        var arr=['<a>','<br>','<p>','<hr>','<h1>','<i>','<b>','<em>','<span>','<img>','<label>','<body>','<title>','<foot>',
+            '<strong>','<ul>','<li>','<tr>','<td>','<th>','<table>','<ml>','<ol>','<frame>','<meta>','<head>','<script>',
+            '<iframe>','<div>','<audio>','<h2>','<small>'];
+
+        function test(tag){
+            var str='<span style="color:red;">'+tag+'</span><br/>';
+                            var div=document.createElement(tag+'');
+            str +=div.constructor.name+'<br />';
+            var elem=div;
+            while(elem=elem.__Proto__){
+                str += elem.constructor.name+'<br />';
+            }
+            return str;
+        }
+        for(var i= 0;i<arr.length;i++){
+            var s=test(arr[i].replace(/<|>/g,''));
+            document.writeln('<div class="dv">'+s+'</div>');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

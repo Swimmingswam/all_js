@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>
+
+    </title>
+    <style>
+        .search{
+            width:300px;
+            height: 30px;
+            margin:100px auto;
+            position:relative;
+        }
+        .search input{
+            width: 200px;
+            height: 25px;
+        }
+        #message{
+            color:#ccc;
+            font:400 18px/18px "microsoft yahei";
+            position:absolute;
+            top:5px;
+            left:10px;
+            cursor:text;
+        }
+    </style>
+</head>
+<body>
+<div class="search">
+    <input type="text" id="txt"/>
+    <label for="txt" id="message">welcome here</label>
+</div>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    window.onload=function(){
+        $("txt").oninput=function(){
+            if(this.value==""){
+                $("message").style.display="block";
+            }
+            else{
+                $("message").style.display="none";
+            }
+        }
+    }
+</script>
+</body>
+</html>

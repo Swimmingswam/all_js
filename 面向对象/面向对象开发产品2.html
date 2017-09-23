@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+           margin:0px;
+           padding:0px;
+        }
+        .main{
+            margin:200px auto;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .pro{
+            width: 230px;
+            height: 230px;
+            border:1px solid #ccc;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="pro">
+        <h2 class="pname">产品名称</h2>
+        <h3 class="pdes">产品描述</h3>
+        <div class="pprice">产品价格</div>
+        <br />
+        <button class="pbuy">马上购买</button>
+        <button class="pcar">放入购物车</button>
+    </div>
+    <div class="pro">
+        <h2 class="pname">产品名称</h2>
+        <h3 class="pdes">产品描述</h3>
+        <div class="pprice">产品价格</div>
+        <br />
+        <button class="pbuy">马上购买</button>
+        <button class="pcar">放入购物车</button>
+    </div>
+    <div class="pro">
+        <h2 class="pname">产品名称</h2>
+        <h3 class="pdes">产品描述</h3>
+        <div class="pprice">产品价格</div>
+        <br />
+        <button class="pbuy">马上购买</button>
+        <button class="pcar">放入购物车</button>
+    </div>
+    <div class="pro">
+        <h2 class="pname">产品名称</h2>
+        <h3 class="pdes">产品描述</h3>
+        <div class="pprice">产品价格</div>
+        <br />
+        <button class="pbuy">马上购买</button>
+        <button class="pcar">放入购物车</button>
+    </div>
+    <div class="pro">
+        <h2 class="pname">产品名称</h2>
+        <h3 class="pdes">产品描述</h3>
+        <div class="pprice">产品价格</div>
+        <br />
+        <button class="pbuy">马上购买</button>
+        <button class="pcar">放入购物车</button>
+    </div>
+</div>
+</body>
+<script src="../jquery-1.11.2.js"></script>
+<script>
+$(document).ready(function() {
+    function product(name, description, price) {
+        this.name = name;
+        this.des = description;
+        this.price = price;
+    }
+
+    product.prototype = {
+        buy: function () {
+            alert("已下单");
+        },
+        car: function () {
+            alert("即将售馨");
+        }
+    }
+    var product1 = new product("iphone", "手机", 3200);
+    var product2 = new product("huawei", "手机", 1800);
+    var product3 = new product("nicai", "手机", 998);
+    var product4 = new product("sansung", "手机", 3000);
+    var product5 = new product("opera", "手机", 2000);
+    var products = [product1, product2, product3, product4, product5];
+    //我的原代码
+    for(var j=0;j<products.length;j++) {
+      var pname = document.getElementsByClassName("pname")[j];
+      var pdes = document.getElementsByClassName("pdes")[j];
+      var pprice = document.getElementsByClassName("pprice")[j];
+      pname.innerHTML = products[j].name;
+      pdes.innerHTML = products[j].des;
+      pprice.innerHTML = products[j].price;
+    }
+    $(".pbuy").on("click",function(){
+        product1.buy();
+    });
+    $(".pcar").on("click",function(){
+        product1.car();
+    })
+    //sf修改1
+   /* for(var j=0;j<products.length;j++) {
+        (function (product, j) {
+            var pname = document.getElementsByClassName("pname")[j];
+            var pdes = document.getElementsByClassName("pdes")[j];
+            var pprice = document.getElementsByClassName("pprice")[j];
+            pname.innerHTML = product.name;
+            pdes.innerHTML = product.des;
+            pprice.innerHTML = product.price;
+        })(products[j], j)
+    }*/
+    //sf修改2
+    /*for(var j=0;j<products.length;j++) {
+        var pname = document.getElementsByClassName("pname")[j];
+        var pdes = document.getElementsByClassName("pdes")[j];
+        var pprice = document.getElementsByClassName("pprice")[j];
+
+        pname.innerHTML = products[j].name;
+        pdes.innerHTML = products[j].des;
+        pprice.innerHTML = products[j].price;
+    }*/
+    //师兄修改
+    /*for(var j=0;j<products.length;j++) {
+        (function (j) {
+            var pname = document.getElementsByClassName("pname")[j];
+            var pdes = document.getElementsByClassName("pdes")[j];
+            var pprice = document.getElementsByClassName("pprice")[j];
+
+            pname.innerHTML = products[j].name;
+            pdes.innerHTML = products[j].des;
+            pprice.innerHTML = products[j].price;
+        })(j)
+
+    }*/
+
+    /*var pname =document.getElementsByClassName("pname")[0];
+    var pdes = document.getElementsByClassName("pdes")[0];
+    var pprice = document.getElementsByClassName("pprice")[0];*/
+    /*var pbuy = $(".pbuy");
+    var pcar = $(".pcar");*/
+    /*for(var i= 0;i<products.length;i++){
+        pname.innerHTML=products[i].name;
+        pdes.innerHTML=products[i].des;
+        pprice.innerHTML=products[i].price;*/
+    /*pname.innerHTML=product1.name;
+    pdes.innerHTML=product1.des;
+    pprice.innerHTML=product1.price;*/
+});
+
+</script>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            display:flex;
+            color:#fff;
+        }
+        ul{
+            width: 200px;
+            height: 200px;
+            margin:200px auto;
+            list-style: none;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 2s;
+            transform: scaleX(1.8)    rotateY(0deg)  ;
+        }
+        ul li{
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align:center;
+            /*transform-origin: top;*/
+            position:absolute;
+            border-radius: 10px;
+            -webkit-background-size: cover;
+
+        }
+        ul li:nth-child(1){
+            background:url(./1.jpg);
+            transform: rotate(0deg) translateZ(100px);
+            background-size: cover;
+        }
+        ul li:nth-child(2){
+            background:url(./2.jpg);
+            transform: rotateX(-90deg) translateZ(100px);
+            background-size: cover;
+        }
+        ul li:nth-child(3){
+            background:url(./4.jpg);
+            transform: rotateX(-180deg) translateZ(100px);
+            background-size: cover;
+        }
+        ul li:nth-child(4){
+            background:url(./yiru.jpg);
+            transform: rotateX(-270deg) translateZ(100px);
+            background-size: cover;
+        }
+        ul li:nth-child(5){
+            background:url(./2.jpg);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        ul li:nth-child(6){
+            background:url(./yiru.jpg);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        /*ul:hover{
+            transform: scaleX(1.8) rotateX(360deg)   ;
+        }*/
+        span{
+            font-size:35px;
+            color:black;
+            position:absolute;
+            top:289px;
+            display: inline-block;
+            z-index: 99;
+        }
+        .pre{
+            left:432px;
+        }
+        .next{
+            right:432px;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>第1个盒子</li>
+    <li>第2个盒子</li>
+    <li>第3个盒子</li>
+    <li>第4个盒子</li>
+    <li>第5个盒子</li>
+    <li>第6个盒子</li>
+</ul>
+<span class="pre"><</span>
+<span class="next">></span>
+<script src="../jquery-1.11.2.js"></script>
+<script>
+    $(document).ready(function(){
+        var num=0;
+        $(".next").on("click",function(){
+            num++;
+            $("ul").css("transform", "scaleX(1.8) rotateY("+90*num+"deg)");
+        });
+        $(".pre").on("click",function(){
+            num++;
+            $("ul").css("transform", "scaleX(1.8) rotateY("+-90*num+"deg)");
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0px; padding:0px;}
+        .box{
+            width:288px;
+            height:200px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            overflow:hidden;
+        }
+        .top span{
+            padding:2px;
+            width:68px;
+            margin:0px;
+            height:15px;
+            line-height:15px;
+            text-align:center;
+            background-color:pink;
+            display:inline-block;
+            float:left;
+            cuisor:pointer;
+        }
+        .bottom li{
+            width:100%;
+            height: 184px;
+            display:none;
+        }
+        .top span.current{
+            background-color: purple;
+        }
+        ul li.show{
+            display:block;
+        }
+
+    </style>
+    <script>
+
+        window.onload=function() {
+            function tab(obj) {//将程序封装成函数
+                var target=document.getElementById(obj);
+                var spans = target.getElementsByTagName("span");
+                var lis = target.getElementsByTagName("li");
+                for (var i = 0; i < spans.length; i++) {
+                    spans[i].xuhao = i;
+                    spans[i].onmouseover = function () {
+                        for (var j = 0; j < spans.length; j++) {
+                            spans[j].className = "";
+                            lis[j].className = "";
+                        }
+                        this.className = "current";
+                        lis[this.xuhao].className = "show";
+                    }
+                    spans[i].onmouseout = function () {
+                        for (var j = 0; j < spans.length; j++) {
+                            lis[j].className = "";
+                            spans[j].className = "";
+                        }
+                        spans[0].className = "current";
+                        lis[0].className = "show";
+                    }
+
+                }
+            }
+            //引用以上函数
+            tab("one");
+            tab("two");
+            tab("three");
+        }
+    </script>
+</head>
+<body>
+<div class="box" id="one">
+    <div class="top">
+        <span class="current">电动牙刷</span>
+        <span>化妆品</span>
+        <span>电饭煲</span>
+        <span>手机</span>
+    </div>
+    <div class="bottom">
+        <ul>
+            <li class="show"><img src="./images/148972260233130128.jpg" alt=""/></li>
+            <li><img src="./images/148972286370958521.jpg" alt=""/></li>
+            <li><img src="./images/148973161922274417.jpg" alt=""/></li>
+            <li><img src="./images/148974061577356798.jpg" alt=""/></li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="two">
+    <div class="top">
+        <span class="current">电动牙刷</span>
+        <span>化妆品</span>
+        <span>电饭煲</span>
+        <span>手机</span>
+    </div>
+    <div class="bottom">
+        <ul>
+            <li class="show"><img src="./images/148972260233130128.jpg" alt=""/></li>
+            <li><img src="./images/148972286370958521.jpg" alt=""/></li>
+            <li><img src="./images/148973161922274417.jpg" alt=""/></li>
+            <li><img src="./images/148974061577356798.jpg" alt=""/></li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="three">
+    <div class="top">
+        <span class="current">电动牙刷</span>
+        <span>化妆品</span>
+        <span>电饭煲</span>
+        <span>手机</span>
+    </div>
+    <div class="bottom">
+        <ul>
+            <li class="show"><img src="./images/148972260233130128.jpg" alt=""/></li>
+            <li><img src="./images/148972286370958521.jpg" alt=""/></li>
+            <li><img src="./images/148973161922274417.jpg" alt=""/></li>
+            <li><img src="./images/148974061577356798.jpg" alt=""/></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

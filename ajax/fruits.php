@@ -1,0 +1,17 @@
+<html>
+<body>
+<?php
+$apple="Æ»¹û";
+
+$flag=$_GET["param"];
+
+if($flag==1){
+   echo "<div>".$apple."</div>";
+}else if($flag==2){
+   echo "<div>Ïã½¶</div>";
+}else{
+   echo "<div>éÙ×Ó</div>";
+}
+?>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+           $("button:eq(0)").click(function(){
+               $("input").attr("title","hello");
+           })
+            $("button:eq(1)").click(function(){
+                alert($("input").attr("title"));
+            })
+            $("button:eq(2)").click(function(){
+                $("input").removeAttr("title");
+            })
+            $("button:eq(3)").click(function(){
+                $("input").val("hi");
+            })
+            $("button:eq(4)").click(function(){
+                alert($("input").val());
+            })
+            $("button:eq(5)").click(function(){
+                $("div").html("<p>morning1</p>");
+            })//?
+            $("button:eq(6)").click(function(){
+                alert($("div").html());
+            })
+            $("button:eq(7)").click(function(){
+                $("div").text("morning2");
+            })
+            $("button:eq(8)").click(function(){
+                alert($("div").text());
+            })
+        })
+    </script>
+</head>
+<body>
+<button>设置属性</button>
+<button>获取属性</button>
+<button>移除属性</button>
+<button>设置值</button>
+<button>获取值</button>
+<button>设置html内容</button>
+<button>获取html内容</button>
+<button>设置text内容</button>
+<button>获取text内容</button>
+<div>
+<input type="text"  />
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo">点击这个按钮，获得您的坐标：</p>
+<button onclick="getLocation()">试一下</button>
+<script>
+    var x=document.getElementById("demo");
+    function getLocation()
+    {
+        //检测是否支持地理定位
+        //如果支持，则运行 getCurrentPosition() 方法。
+        //如果不支持，则向用户显示一段消息。
+        if (navigator.geolocation)
+        {
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }
+        else{x.innerHTML="Geolocation is not supported by this browser.";}
+    }
+    //如果getCurrentPosition()运行成功，则向参数showPosition中规定的函数返回一个coordinates对象
+    //showPosition() 函数获得并显示经度和纬度
+    function showPosition(position)
+    {
+        x.innerHTML="Latitude: " + position.coords.latitude +
+                "<br />Longitude: " + position.coords.longitude;
+    }
+    //getCurrentPosition() 方法的第二个参数用于处理错误。它规定当获取用户位置失败时运行的函数
+    function showError(error)
+    {
+        switch(error.code)
+        {
+            case error.PERMISSION_DENIED:     //Permission denied - 用户不允许地理定位
+                x.innerHTML="User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:     //Position unavailable - 无法获取当前位置
+                x.innerHTML="Location information is unavailable."
+                break;
+            case error.TIMEOUT:    //Timeout - 操作超时
+                x.innerHTML="The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML="An unknown error occurred."
+                break;
+        }
+    }
+</script>
+</body>
+</html>

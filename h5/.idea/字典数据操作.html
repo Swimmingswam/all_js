@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list"></ul>
+<div id="info"></div>
+<script>
+    var data={
+      01:{
+          name:"one",
+          age:18
+      },
+      02:{
+          name:"two",
+          age:19
+      },
+      03:{
+          name:"three",
+          age:20
+      }
+    };
+    var list=document.getElementById("list");
+    for(var id in data){
+        var item=data[id];
+        var lielement=document.createElement("li");
+        lielement.appendChild(document.createTextNode(item.name));
+        lielement.setAttribute("date-age",item.age);
+        lielement.setAttribute("date-id",item.id);
+        list.appendChild(lielement);
+        lielement.addEventListener("click",function(){
+             console.log(this.dataset["age"]);    //失败，返回全是undefined
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 180px;
+            height: 180px;
+            border:1px solid #ccc;
+        }
+        .ball{
+            width: 160px;
+            height: 160px;
+            background-color: blue;
+            border:0px;
+            border-radius: 80px;
+            background-image:radial-gradient(100px at 40px 0px,rgba(0,0,0,0),rgba(0,0,0,0.8));
+            animation: drop 0.5s infinite;
+            position:absolute;
+            top:50px;
+            left:500px;
+            animation-direction: alternate;
+            animation-timing-function: ease;
+        }
+        @keyframes drop {
+            0% {
+            width: 160px;
+            height: 160px;
+            background-color: blue;
+            border:0px;
+            border-radius: 80px;
+            background-image:radial-gradient(100px at 40px 40px,rgba(0,0,0,0),rgba(0,0,0,0.8));
+            position:absolute;
+            top:30px;
+            }
+            30% {
+             width: 160px;
+             height: 158px;
+             background-color: blue;
+             border:0px;
+             border-radius: 80px;
+             background-image:radial-gradient(100px at 40px 40px,rgba(0,0,0,0),rgba(0,0,0,0.8));
+             position:absolute;
+             top:40px;
+             transform:rotate(30deg);
+            }
+            50% {
+                width: 160px;
+                height: 155px;
+                background-color: blue;
+                border:0px;
+                border-radius: 80px;
+                background-image:radial-gradient(100px at 40px 40px,rgba(0,0,0,0),rgba(0,0,0,0.8));
+                position:absolute;
+                top:60px;
+                transform:rotate(60deg);
+            }
+            80% {
+                width: 160px;
+                height: 150px;
+                background-color: blue;
+                border:0px;
+                border-radius: 80px;
+                background-image:radial-gradient(100px at 40px 40px,rgba(0,0,0,0),rgba(0,0,0,0.8));
+                position:absolute;
+                top:90px;
+                transform:rotate(90deg);
+            }
+            100% {
+                width: 160px;
+                height: 150px;
+                background-color: blue;
+                border:0px;
+                border-radius: 80px;
+                background-image:radial-gradient(100px at 40px 40px,rgba(0,0,0,0),rgba(0,0,0,0.8));
+                position:absolute;
+                top:150px;
+                transform:rotate(180deg);
+            }
+        }
+        .shadow{
+            border-radius: 80px / 30px;
+            height: 20px;
+            background-color: #ccc;
+            position: absolute;
+            width: 160px;
+            top:302px;
+            left:500px;
+            animation: small 1s infinite;
+            animation-direction: alternate;
+            animation-timing-function: ease;
+        }
+        @keyframes small{
+            0%{border-radius: 80px / 30px;
+                height: 20px;
+                background-color: #ccc;
+                position: absolute;
+                width: 160px;
+                top:302px;
+                left:500px;
+                }
+            /*30%{border-radius: 80px / 30px;
+                height: 20px;
+                background-color: #ccc;
+                position: absolute;
+                width: 150px;
+                top:302px;
+                left:505px;
+                opacity: 0.8;
+                }*/
+            50%{
+                border-radius: 80px / 30px;
+                height: 20px;
+                background-color: #ccc;
+                position: absolute;
+                width: 130px;
+                top:302px;
+                left:510px;
+                opacity: 0.5;
+            }
+            /*80%{
+                border-radius: 80px / 30px;
+                height: 20px;
+                background-color: #ccc;
+                position: absolute;
+                width: 100px;
+                top:302px;
+                left:515px;
+                opacity: 0.3;
+            }*/
+            100%{
+                border-radius: 80px / 30px;
+                height: 20px;
+                background-color: #ccc;
+                position: absolute;
+                width: 60px;
+                opacity: 0;
+                top:302px;
+                left:520px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+    <div class="shadow"></div>
+</body>
+</html>

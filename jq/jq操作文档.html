@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            //内部插入节点
+            $("button:eq(0)").click(function(){
+                $("div").append("<span>我是由append添加的span1</span>")
+            });
+            $("button:eq(1)").click(function(){
+                $("<span>我是由appendTo添加的span2</span>").appendTo("div");
+            });
+            $("button:eq(2)").click(function(){
+                $("div").prepend("<p>我是由prepend添加的p1</p>")
+            });
+            $("button:eq(3)").click(function(){
+                $("<p>我是由prepend添加的p2</p>").prependTo("div");
+            });
+            //外部插入节点
+            $("button:eq(4)").click(function(){
+                $("li:eq(0)").after("<em>我是由after添加的em1</em>");
+            });
+            $("button:eq(5)").click(function(){
+                $("li:eq(0)").before("<em>我是由before添加的em2</em>");
+            });
+            $("button:eq(6)").click(function(){
+                $("<em>我是由before添加的em3</em>").appendTo("li:eq(2)");
+            });
+            $("button:eq(7)").click(function(){
+                $("<em>我是由before添加的em4</em>").appendTo("li:eq(3)");
+            });
+            $("button:eq(8)").click(function(){
+                $("ul").remove("<em>我是由before添加的em2</em>");//?
+            });
+            $("button:eq(9)").click(function(){
+                $("ul").empty();
+            });
+            $("button:eq(10)").click(function(){
+                $(this).remove();
+            });
+            $("button:eq(11)").click(function() {
+                $("ul").html("");
+            })
+            $("button:eq(12)").click(function() {
+                $("li:eq(0)").clone();//?
+            });
+            $("button:eq(13)").click(function() {
+                $("li:eq(0)").clone(true);//?
+            });
+            $("button:eq(14)").click(function() {
+                $("i:first").wrap("div");
+            });
+            $("button:eq(15)").click(function() {
+                $("i").wrapAll("div");
+            });
+            $("button:eq(16)").click(function() {
+                $("div").replaceWith("<span>yes</span>");
+            });
+        });
+    </script>
+</head>
+<body>
+<button>append 在内部后面加元素1</button>
+<button>appendTo 在内部后面加元素2</button>
+<button>prepend 在内部前面加元素1</button>
+<button>prependTo 在内部前面加元素2</button>
+<button>after 在外部后面加兄弟元素1</button>
+<button>before 在外部前面加兄弟元素2</button>
+<button>innerBefore 在外部前面加兄弟元素3</button>
+<button>innerAfter 在外部后面加兄弟元素4</button>
+<button>remove 删除选中元素</button>
+<button>empty 清空子元素1</button>
+<button>remove 自杀</button>
+<button>empty 清空子元素2</button>
+<button>clone 复制1</button>
+<button>clone 复制2</button>
+<button>wrap 包裹单个节点</button>
+<button>wrapAll 包裹全部</button>
+<button>replaseWith 替换节点</button>
+<br />
+<i>hello</i>
+<i>hello</i>
+<i>hello</i>
+<i>hello</i>
+<i>hello</i>
+<i>hello</i>
+<i>hello</i>
+<div>
+    <ul>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+        <li>我是li5</li>
+    </ul>
+</div>
+</body>
+</html>

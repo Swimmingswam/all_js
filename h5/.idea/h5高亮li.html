@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            margin:0;
+
+        }
+        .list{
+            width: 300px;
+            height: 50px;
+        }
+        a:link{
+            link:normal;
+            text-decoration: none;
+            color:#000;
+        }
+        .brand{
+            float:left;
+            width: 50px;
+            height: 25px;
+            margin:1px;
+            padding:3px;
+            front:20px;
+            line-height: 20px;
+            text-align: center;
+        }
+        .item{
+            list-style: none;
+            float:left;
+            width: 50px;
+            height: 25px;
+            margin:1px;
+            padding:3px;
+            front:20px;
+            line-height: 20px;
+            text-align: center;
+        }
+        .active{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="brand">
+        <a href="#">Brand</a>
+    </div>
+    <ul class="list">
+        <li class="item"><a href="#">Home</a></li>
+        <li class="item"><a href="#">link1</a></li>
+        <li class="item"><a href="#">link2</a></li>
+        <li class="item"><a href="#">link3</a></li>
+    </ul>
+</div>
+<script>
+    (function(){
+        var nav=document.querySelector(".nav");
+        var brand=document.querySelector(".brand");
+        var list=document.querySelector(".list");
+        var items=document.querySelectorAll(".item");
+
+        for(var i=0;i<items.length;i++){
+            items[i].addEventListener("mouseover",function(e){
+                for(var j=0;j<items.length;j++){
+                    e.preventDefault();
+                    items[j].classList.remove("active");
+                }
+                this.classList.add("active");
+                e.preventDefault();
+            })
+        }
+        list.addEventListener("mouseout",function(e){
+            e.preventDefault();
+            for(var j=0;j<items.length;j++){
+                e.preventDefault();
+                items[j].classList.remove("active");
+            }
+
+        })
+        brand.addEventListener("click",function(e){
+            this.classList.toggle("active");
+            e.preventDefault();
+        })
+    })();
+</script>
+</body>
+</html>

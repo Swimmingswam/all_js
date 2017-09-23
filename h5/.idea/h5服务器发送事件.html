@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>获得服务器更新</h1>
+<div id="result"></div>
+
+<script>
+    //创建一个新的 EventSource 对象，然后规定发送更新的页面的 URL（本例中是 "demo_sse.php"）
+    //每接收到一次更新，就会发生 onmessage 事件
+    //当 onmessage 事件发生时，把已接收的数据推入 id 为 "result" 的元素中
+    if(typeof(EventSource)!=="undefined")
+    {
+        var source=new EventSource("http://www.w3school.com.cn/example/html5/demo_sse.php");
+        source.onmessage=function(event)
+        {
+            document.getElementById("result").innerHTML+=event.data + "<br />";
+        };
+    }
+    else
+    {
+        document.getElementById("result").innerHTML="抱歉，您的浏览器不支持 server-sent 事件 ...";
+    }
+    //php代码部分
+    /*<?php
+            header('Content-Type: text/event-stream');
+    header('Cache-Control: no-cache');
+
+    $time = date('r');
+    echo "data: The server time is: {$time}\n\n";
+    flush();
+    ?>*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+
+    <form action="./data2.php" method="post" target="myframe">
+        用户名：<input type="text" name="username"/><br />
+        密码：<input type="password" name="password"/>
+        <input type="submit" value="登录"/>
+    </form>
+</div>
+<script>
+    window.onload=function(){
+        //准备秘书
+        var xhr=null;
+        if(window.XMLHttpRequest){
+            xhr=new XMLHttpRequest();
+        }else{
+            xhr=new ActiveXONject("Microsoft.XMLHTTP");
+        }
+        //让秘书准备做的事
+        var username=document.getElementsByName("username")[0];
+        var password=document.getElementsByName("password")[0];
+        var url="./data2.php?username="+username+"&password="+password;
+        xhr.open("get",url,true);
+        //等秘书把小李带到领导前，领导要做的事    （回调函数）
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                var data=xhr.responseText;
+                if(data==1){
+                    document.getElementById("showInfo").innerHTML="用户名或者密码错误";
+                }else if(data==2){
+                    document.getElementById("showInfo").innerHTML="登录成功！";
+                }
+            }
+        }
+        //秘书按领导指示去找小李
+        xhr.send(null);
+    }
+</script>
+</body>
+</html>

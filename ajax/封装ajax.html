@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function ajax(data){
+        //data={data:data_type:"xml/json",type:"get/post",url:"",asyn:"true/false",success:function(){},failure:function(){}}
+        window.onload=function(){
+            //一：创建秘书
+            var xhr=null;
+            if(window.XMLHttpRequest){
+                xhr= new XMLHttpRequest();
+            }else{
+                xhr= new ActiveXObject("Microsofr.XMLHTTP");
+            }
+            //二：配置请求
+            var type=data.type=="get"?"get":"post";   //post的时候，xhr.send(post);    get的时候，xhr.send(null)
+            var url="";
+            if(data.url){
+                url=data.url;
+            }
+            var flag=data.asyn=="true"?"true":"false";
+            xhr.open(type,url,flag);
+            //三：发送请求
+            if(type=="get"){
+                xhr.send(null);
+            }else if(type=="post"){
+                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xhr.send(data.data);
+            }
+
+            //四：浏览器执行回调函数
+            xhr.onreadystatechange=function(){
+                if(this.readyState==4){//请求接收完成
+                   if(this.status==200){//接收的数据可用
+                       if(typeof data.success=="function"){
+                           var d=data.data_type=="xml"?"xhr.responseXML":"xhr.responseText";
+                           data.success(d);
+                       }
+                   }else{
+                       data.failure(d);
+                   }
+                }
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

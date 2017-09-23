@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>target</title>
+</head>
+<body>
+<table>
+<tr>
+<td>
+<img src="C:\Users\acer\Desktop\js练习\我的博客\我有几个小目标.jpg" height=800 width=500>
+</td>
+<td>
+ <table border="1" cellspacing="0" width="700" height=600>
+ <thead bgcolor="#FF9566" height=200><td width="100"><b>Date</b>
+ <td align="center">I</td>
+ <td align="center">II</td>
+ <td align="center">III</td>
+ </thead>
+ <tbody>
+ <tr height=100><td width="100" bgcolor="yellow"><b>School</b></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ </tr>
+ <tr height=100>
+ <td width="100" bgcolor="yellow"><b>Social</b></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ </tr>
+ <tr height=100>
+ <td width="100" bgcolor="yellow"><b>Family</b></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ </tr>
+ <tr height=100>
+ <td width="100" bgcolor="yellow"><b>Work</b></td>
+ <td></td>
+ <td></td>
+ <td></td>
+ </tr>
+ <tr hright=100>
+ <td rowspan="3" width="60" height="50"  bgcolor="yellow"><b>Extra</b></td>
+ <td colspan="3"height=50></td>
+ </tr>
+ <tr height=50><td colspan="3"></td></tr>
+ <tr height=50><td colspan="3"></td></tr>
+ </tbody>
+ </table>
+</td>
+</tr>
+</table>
+</body>
+</html>

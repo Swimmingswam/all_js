@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload=function(){
+            var txt1=document.getElementById("txt");//var txt=document.getElementById("txt").value;
+            var btn=document.getElementById("btn");
+            btn.onclick=function(){
+                var txt=txt1.value;//不要这行
+                switch(txt) {
+                   case "apple":
+                       alert("the price today is 5$");
+                       break;
+                   case "banana":
+                       alert("the price today is 6$");
+                       break;
+                   case "pear":
+                       alert("the price today is 10$");
+                       break;
+                   case "pineapple":
+                       alert("the price today is 8$");
+                       break;
+                   case "lemon":
+                       alert("the price today is 6$");
+                       break;
+                   case "orange":
+                       alert("the price today is 4$");
+                       break;
+                   default:
+                       alert("there is not it today");
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<input type="text" id="txt"/><br />
+<button id="btn">查询</button>
+</body>
+</html>

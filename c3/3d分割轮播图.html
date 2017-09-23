@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .cut{
+            margin:200px auto;
+            background-color: pink;
+            width: 375px;
+            height: 220px;
+            position:relative;
+
+        }
+        ul{
+            list-style: none;
+        }
+        .cut li{
+            width: 75px;
+            background-color: purple;
+            height:100%;
+            position:absolute;
+            transform-style: preserve-3d;
+            top:0px;
+            transition: all 1s;
+        }
+        li div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+        }
+        li div:nth-child(1){
+            background: url(./1.jpg);
+            transform: rotateX(0deg) translateZ(110px);
+        }
+        li div:nth-child(2){
+            background: url(./2.jpg);
+            transform: rotateX(-90deg) translateZ(110px);
+        }
+        li div:nth-child(3){
+            background: url(./3.jpg);
+            transform: rotateX(-180deg) translateZ(110px);
+        }
+        li div:nth-child(4){
+            background: url(./yiru.jpg) no-repeat;
+            background-size: 375px 220px;
+            transform: rotateX(-270deg) translateZ(110px);
+        }
+        span{
+            font-size:35px;
+            color:black;
+            position:absolute;
+            top:94px;
+            display: inline-block;
+            z-index: 99;
+        }
+        .pre{
+            right:345px;
+        }
+        .next{
+            left:343px;
+        }
+    </style>
+</head>
+<body>
+<div class="cut">
+    <ul>
+        <li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </li>
+        <li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </li>
+        <li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </li>
+        <li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </li>
+        <li>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </li>
+    </ul>
+    <span class="pre"><</span>
+    <span class="next">></span>
+</div>
+</body>
+<script src="../jquery-1.11.2.js"></script>
+<script>
+$(document).ready(function(){
+   $("li").each(function(index,ele){
+       $(this).css({"left":75*index,"transition-delay":0.1*index+"s"});
+       $(this).children("div").css("backgroundPosition",-75*index+"px 0");
+   })
+    var num=0;
+    $(".pre").on("click",function(){
+        num--;
+        $("li").css("transform","rotateX("+num*90+"deg)");
+    });
+    $(".next").on("click",function(){
+        num++;
+        $("li").css("transform","rotateX("+num*90+"deg)");
+    });
+})
+</script>
+</html>

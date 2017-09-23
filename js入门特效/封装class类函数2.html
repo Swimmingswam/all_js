@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            margin:10px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            function getclassname(classname){
+                if(document.getElementsByClassName) {
+                    return document.getElementsByClassName(classname);
+                }
+                var arr=[];
+                var all=document.getElementsByTagName("*");
+                for(var i=0;i<all.length;i++){
+                    var txtarr=all[i].className.split(" ");
+                    for(var j=0;j<txtarr.length;j++){
+                        if(txtarr[j]==classname){
+                            arr.push(txtarr[j]);
+                        }
+                    }
+                }
+                return arr;
+            }
+            var purple=getclassname("damo");
+            for(var k=0;k<purple.length;k++)
+            {
+                purple[k].style.backgroundColor="purple";
+            }
+        }
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div class="damo"></div>
+<div></div>
+<div class="damo one two"></div>
+<div class="damo"></div>
+<div></div>
+<div class="damo txa"></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .box{
+            display: flex;
+            flex-direction: column;
+        }
+        .list{
+            margin:auto;
+            width: 300px;
+            /*height: 100px;*/
+        }
+        .list h3{
+            margin:1px;
+            background-color: blue;
+            color:#fff;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            transition: all 1s;
+        }
+        .des {
+            height: 0;
+            background:url(../images/timg_01.gif) no-repeat;
+            transition: all 1s;
+            background-size: 100%;
+            
+        }
+        .list:hover h3{
+            background-color: #036;
+        }
+        .list:hover .des {
+            height: 121px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="list">
+        <h3>今日google</h3>
+        <div class="des">
+        </div>
+    </div><div class="list">
+        <h3>今日google</h3>
+        <div class="des">
+        </div>
+    </div><div class="list">
+        <h3>今日google</h3>
+        <div class="des">
+        </div>
+    </div><div class="list">
+        <h3>今日google</h3>
+        <div class="des">
+        </div>
+    </div><div class="list">
+        <h3>今日google</h3>
+        <div class="des">
+        </div>
+    </div><div class="list">
+        <h3>今日google</h3>
+        <div class="des">
+        </div>
+    </div>
+</div>
+</body>
+</html>

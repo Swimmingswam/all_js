@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+   #demo{
+   width:290px;
+   height:184px;
+   border:2px;
+
+
+    position:absolute;
+    left:0px;
+    top:0px;
+   }
+
+   div{
+    font-size:15px;
+	display:inline-block;
+	float:left;
+	width:25px;
+	height:25px;
+	line-height:25px;
+	margin:3px;
+    display:none;
+    position:absolute;
+    left:0px;
+    top:0px;
+	}
+button{
+ float:right;
+}
+</style>
+ </head>
+ <body>
+  <img src="./images/148972260233130128.jpg" id="demo">
+  <button onmouseover="fn('demo1')" onmouseout="fn1('demo1')"><strong>1</strong></button>
+  <button onmouseover="fn('demo2')" onmouseout="fn1('demo2')"><strong>2</strong></button>
+  <button onmouseover="fn('demo3')" onmouseout="fn1('demo3')"><strong>3</strong></button>
+   <div id="demo1"><img src="./images/148972286370958521.jpg"></div>
+   <div id="demo2"><img src="./images/148973161922274417.jpg"></div>
+   <div id="demo3"><img src="./images/148974061577356798.jpg"></div>
+  <script>
+   /*var demo= document.getElementById("demo");
+   var one = document.getElementById("one");
+   var two = document.getElementById("two");
+
+    one.onmouseover = function(){
+	  demo.src="./images/148972286370958521.jpg";
+	}
+	two.onmouseover = function(){
+	  demo.src="./images/148973161922274417.jpg";
+	}
+	three.onmouseover = function(){
+	  demo.src="./images/148974061577356798.jpg";
+	}
+	one.onmouseout= function(){
+	  demo.src="./images/148972260233130128.jpg";
+	}
+	two.onmouseout= function(){
+	  demo.src="./images/148972260233130128.jpg";
+	}
+	three.onmouseout= function(){
+	  demo.src="./images/148972260233130128.jpg";
+	}*/
+   function fn(obj){
+    var target = document.getElementById(obj);
+    target.style.display="block";
+   }
+   function fn1(){
+    var target = document.getElementById(obj);
+    target.style.display="none";
+   }
+
+
+
+	</script>
+ </body>
+</html>

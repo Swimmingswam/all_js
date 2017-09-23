@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./template.js"></script>
+</head>
+<body>
+<h1>最新电影：</h1>
+<div id="movies"></div>
+<script id="arttemplate" type="text/html">
+    <strong>电影名：</strong>{{name}}<br />
+    <strong>导演：</strong>{{leader}}<br />
+    <strong>主演：</strong>{{actor}}
+</script>
+<script>
+    var movies={
+        name:"三生三世",
+        leader:"铁名",
+        actor:"杨洋、刘亦菲"
+    };
+    var content=template("arttemplate",movies);
+    document.getElementById("movies").innerHTML=content;
+</script>
+</body>
+</html>

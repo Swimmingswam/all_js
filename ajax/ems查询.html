@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #ems{
+            position:absolute;
+            left:50%;
+            width: 400px;
+            height:auto;
+            margin-left:-200px;
+            background: lightgreen;
+            text-align: center;
+            min-height: 50px;
+            height:500px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #ems input{
+            height: 25px;
+            margin-top:10px;
+        }
+        #list{
+            background: lightblue;
+        }
+        #list li{
+            text-align:left;
+        }
+    </style>
+</head>
+<body>
+<div id="ems">
+    <div>
+        <input type="text" id="code"/>
+        <input type="button" value="查询" id="btn"/>
+    </div>
+    <div id="list"></div>
+</div>
+<script>
+window.onload=function(){
+    document.getElementById("btn").onclick=function(){
+        var code=document.getElementById("code").value;
+        var xhr=null;
+        try{
+            xhr=new XMLHttpRequest();
+        }catch(e){
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open("get","ems.php");
+        xhr.send(null);
+        xhr.onreadystatechange=function(){
+            if(this.readyState==4&&this.status==200){
+                var data=JSON.parse(this.responseText);
+                if(data.status==0){
+                    var tag="";
+                    for(var i =0;i<list.length;i++){
+                        var item=list[i];
+                        var desc=item.desc;
+                        var t=new Date();
+                        t.setTime(item.item+"000");
+                        var str= t.getFullYear()+"年"+(t.getMonth()+1)+"月"+ t.getDay()+"日"+(t.getHours()>12?"下午":"上午")+
+                                t.getHours()%12+":"+ t.getMinutes()+":"+ t.getSeconds();
+                        tag+="<li><div>"+str+"</div><div>"+item.desc+"</div></li>"
+                    }
+                }else{
+                    var info=data.msg;
+                    document.getElementById("list").innerHTML=info;
+                }
+            }
+        }
+    }
+}
+//JSON对象，，，，，不懂如何拆分转化成JSON的格式！！！
+//{"msg":"\u8be5\u5355\u53f7\u6682\u65e0\u7269\u6d41\u8fdb\u5c55\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff0c\u6216\u68c0\u67e5\u516c\u53f8\u548c\u5355\u53f7\u662f\u5426\u6709\u8bef\u3002","status":"-3","error_code":"3","data":{"info":{"_source_com":"","_support_from":"kuaidi100"},"com":"ems","company":{"url":"http:\/\/www.kuaidi100.com\/all\/ems.shtml?from=openv","fullname":"EMS","shortname":"EMS","icon":{"id":"2","smallurl":"https:\/\/ss2.baidu.com\/6ONYsjip0QIZ8tyhnq\/it\/u=1807529516,3291075151&fm=58","smallpos":"0,944","middleurl":"https:\/\/ss1.baidu.com\/6ONXsjip0QIZ8tyhnq\/it\/u=1835223070,3312272045&fm=58","middlepos":"0,828","normal":"https:\/\/ss1.baidu.com\/6ONXsjip0QIZ8tyhnq\/it\/u=295567570,1377797753&fm=58"},"icon249":"https:\/\/ss2.baidu.com\/6ONYsjip0QIZ8tyhnq\/it\/u=2482145894,2699292432&fm=58","website":{"title":"www.ems.com.cn","url":"http:\/\/www.ems.com.cn\/"},"tel":"11183","auxiliary":[{"title":"\u7f51\u70b9\u67e5\u8be2","url":"http:\/\/www.ems.com.cn\/serviceguide\/tong_da_fan_wei.html"},{"title":"\u7f51\u4e0a\u5bc4\u4ef6","url":"http:\/\/www.ems.com.cn\/serviceguide\/zifeichaxun\/zi_fei_biao_zhun.html"}],"timecost":{"btn_show":"1","url":"http:\/\/www.ems.com.cn\/serviceguide\/zifeichaxun\/zi_fei_cha_xun.html"},"onlineorder":{"btn_show":"1","url":"http:\/\/www.11183.com.cn\/ec-web\/"}},"source":{"logo":"https:\/\/ss2.baidu.com\/6ONYsjip0QIZ8tyhnq\/it\/u=1429564979,1787167512&fm=58","title":"\u6570\u636e\u6765\u81ea\u5feb\u9012100","url":"http:\/\/www.kuaidi100.com\/?from=baidu_ala","name":"\u5feb\u9012100","showName":"\u5feb\u9012100"},"kuaidiSource":{"logo":"https:\/\/ss2.baidu.com\/6ONYsjip0QIZ8tyhnq\/it\/u=1429564979,1787167512&fm=58","title":"\u6570\u636e\u6765\u81ea\u5feb\u9012100","url":"http:\/\/www.kuaidi100.com\/?from=baidu_ala","name":"\u5feb\u9012100","showName":"\u5feb\u9012100"}}})
+</script>
+
+</body>
+</html>

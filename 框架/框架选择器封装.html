@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            border:1px solid red;
+            width: 100px;
+            height: 50px;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div id="a"></div>
+<div class="b"></div>
+<div></div>
+</body>
+<script>
+    function get(selector,results){
+        results=results||[];
+        var rquickexpr=/^(?:#([\w-]+)|\.([\w-]+)|([\w]+)|(\*))$/,
+        m= rquickexpr.exec(selector);
+        if(m){
+           if(m[1]){
+               results=getid(m[1],results);
+           }else if(m[2]){
+               results=getclass(m[2],results);
+           }else if(m[3]){
+               results=gettag(m[3],results);
+           }else if(m[4]){
+               results=gettag(m[4],results);
+           }
+        }
+        return results;
+    }
+    function getid(id,results){
+        results=results||[];
+        results.push(document.getElementById(id));
+        return results;
+    };
+    function getclass(classname,results){
+        results=results||[];
+        results.push.apply(results,document.getElementsByClassName(classname));
+        return results;
+    };
+    function gettag(tag,results){
+        results=results||[];
+        results.push.apply(results,document.getElementsByTagName(tag));
+        return results;
+    };
+    function each(arr,fn){
+        for(var i=0;i<arr.length;i++){
+            if(fn.call(arr[i],i,arr[i])===false){
+                break;
+            }
+        }
+    }
+    each(get("#a"),function(){
+        this.style.backgroundColor="skyblue";
+    });
+</script>
+</html>

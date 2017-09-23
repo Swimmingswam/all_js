@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+window.onload=function(){
+    for(let i=0;i<10;i++){
+        var a =document.createElement("a");
+        a.innerHTML="123"+"<br/>";
+        a.addEventListener("click",function(e){
+            e.preventDefault();
+            alert(i+1);
+        }
+    )
+        document.getElementsByTagName("body")[0].append(a);
+    }}
+//原错误码
+/*
+ for(var j=0;j<10;j++){
+var a=document.createElement("a");
+a.innerHTML=i+"<br/>";
+document.getElementsByTagName("body")[0].append(a);
+a.addEventListener("click",function(e){
+    e.preventDefault();
+    alert(i);
+})
+}*/
+//以上修改后
+    /*window.onload=function(){
+      var i,a;
+        for(i=0;i<10;i++){
+            (function before(i){
+                a=document.createElement("a");
+                a.innerHTML=i+"<br/>";
+                document.getElementsByTagName("body")[0].append(a);
+                a.addEventListener("click",function(e){
+                    e.preventDefault();
+                    alert(i);
+                })
+            })(i);
+        }
+    }*/
+//以上用let解决闭包方法
+/*window.onload=function(){
+    for(let i=0;i<10;i++){
+            a=document.createElement("a");
+            a.innerHTML=i+"<br/>";
+            document.getElementsByTagName("body")[0].append(a);
+            a.addEventListener("click",function(e){
+                e.preventDefault();
+                alert(i);
+            })
+    }
+}*/
+
+</script>
+
+</html>

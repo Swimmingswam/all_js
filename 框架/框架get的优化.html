@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .react{
+            height: 100px;
+            width: 400px;
+            margin:10px;
+        }
+        .c{
+            border:1px solid red;
+        }
+        .c1{
+            border:1px solid green;
+        }
+        .c2{
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div class="c3">
+    <div class="c1 react"></div>
+    <div class="c2 react"></div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+<hr />
+<div>
+    <div class="c1 react"></div>
+    <div class="c2 react"></div>
+    <div class="c react"></div>
+    <div class="c1 react"></div>
+</div>
+</body>
+<script>
+    function mypush(target,els){
+        var j=target.length,
+                i=0;
+        while((target[j++]=els[i++])){}
+        target.length=j-1;
+    }
+    function gettag(tag,context,results){
+        results=results||[];
+        try{
+            results.push.apply(results,context.getElementsByTagName(tag));
+        }catch(e){
+            mypush(results,context.getElementsByTagName(tag));
+        }
+        return results;
+    }
+    function each(arr,fn){
+        for(var i=0;i<arr.length;i++){
+            if(fn.call(arr[i],i,arr[i])===false){
+                break;
+            }
+        }
+    }
+    function getid(id,results){
+        results=results||[];
+        results.push(document.getElementById(id));
+        return results;
+    }
+    function getclass(classname,context,results){
+        results=results||[];
+        //context=context||document;
+        if(document.getElementsByClassName){
+            results.push.apply(results,context.getElementsByClassName(classname));
+        }else{
+            each(gettag("*",context),function(i,v){
+                if((""+ v.className+"").indexOf(""+classname+"")!=-1){
+                    results.push(v);
+                }
+            })
+        }
+        return results;
+    }
+    //优化一，假设context是dom节点
+    function get(selector,context,results){
+        results=results||[];
+        context=context||document;
+        var rquickexpr=/^(?:#([\w-]+)|\.([\w-]+)|([\w]+)|(\*))$/,
+                m= rquickexpr.exec(selector);
+        if(m){
+            if(m[1]){
+                results=getid(m[1],results);
+            }
+            else if(m[2]){
+                results=getclass(m[2],context,results);
+            }
+            else if(m[3]){
+                results=gettag(m[3],context,results);
+            }else if(m[4]){
+                results=gettag(m[4],context,results);
+            }
+        }
+        return results;
+    }
+    /*var a=get(".c3");
+    get(".c3")[0].style.border="1px solid red";
+    get(".c",a[0])[0].style.backgroundColor="pink";*/
+    //优化二，假设context是dom数组
+    function get(selector,context,results){
+        results=results||[];
+        context=context||document;
+        var rquickexpr=/^(?:#([\w-]+)|\.([\w-]+)|([\w]+)|(\*))$/,
+                m= rquickexpr.exec(selector);
+        if(m){
+            if(context.nodeType){
+                context=[context];
+            }
+            /*if(context.length<=1){
+                context=[context];
+            }*/
+            each(context,function(i,v){
+                if(m[1]){
+                    results=getid(m[1],results);
+                }
+                else if(m[2]){
+                    results=getclass(m[2],this,results);
+                }
+                else if(m[3]){
+                    results=gettag(m[3],this,results);
+                }else if(m[4]){
+                    results=gettag(m[4],this,results);
+                }
+            })
+        }
+        return results;
+    }
+    /*var a=get(".c3");
+    each(get(".c",a),function(){
+        this.style.backgroundColor="pink"
+    });*/
+    //优化三，context是字符串
+    function get(selector,context,results){
+        results=results||[];
+        context=context||document;
+        var rquickexpr=/^(?:#([\w-]+)|\.([\w-]+)|([\w]+)|(\*))$/,
+                m= rquickexpr.exec(selector);
+        if(m){
+            if(context.nodeType){
+                context=[context];
+            }
+            if(typeof context=="string"){
+                context=get(context);
+            }
+            each(context,function(i,v){
+                if(m[1]){
+                    results=getid(m[1],results);
+                }
+                else if(m[2]){
+                    results=getclass(m[2],this,results);
+                }
+                else if(m[3]){
+                    results=gettag(m[3],this,results);
+                }else if(m[4]){
+                    results=gettag(m[4],this,results);
+                }
+            })
+        }
+        return results;
+    }
+    /*each(get(".c2",".c3"),function(){
+        this.style.backgroundColor="green"})*/
+</script>
+</html>

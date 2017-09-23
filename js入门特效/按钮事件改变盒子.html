@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #demo{
+     width:200px;
+     height:200px;
+     background-color:#ffff00;
+    }
+  </style>
+ </head>
+ <body>
+  <div id="demo"></div>
+  <button id="btn1">change&nbsp width</button>
+  <button id="btn2">change&nbsp height</button>
+  <button id="btn3">change&nbsp color</button>
+ <script>
+  var demo = document.getElementById("demo");
+  var btn = document.getElementById("btn1");
+  var btnp = document.getElementById("btn2");
+  var btnq = document.getElementById("btn3");
+
+  btn1.onclick = function(){
+   demo.style.width ="400px";
+  }
+  btn2.onclick = function(){
+   demo.style.height ="300px";
+  }
+  btn3.onclick = function(){
+   demo.style.backgroundColor ="#ff3399";
+  }
+  
+  
+ 
+  </script>
+ </body>
+</html>

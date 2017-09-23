@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div>
+    <div class="showInfo"></div>
+<form>
+    用户名：<input type="text" name="username" id="username"/>
+    密码：<input type="password" name="password" id="password"/>
+    <input type="button" value="登录" id="btn"/>
+</form>
+</div>
+</body>
+<script>
+    window.onload=function() {
+        document.getElementById("btn").onclick = function () {
+            //准备秘书
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            var username = document.getElementById("username");
+            var password = document.getElementById("password");
+            //计划好做什么事
+            var url = "open.php?username=" + username + "&password=" + password;
+            xhr.open("get", url, true);
+            //做这件事
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            var param = "username=" + username + "&password=" + password;
+            xhr.send(param);
+            //回调，秘书把数据带来后浏览器要做的事
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var data = xhr.responseText;
+                        console.log(data);
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+</html>

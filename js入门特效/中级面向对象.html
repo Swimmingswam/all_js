@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //面向对象方法
+    function divtag(dom){
+        this.dom=document.createElement(dom);
+        this.appendto=function(target){
+            target.appendChild(this.dom);
+            return this;
+        }
+        this.css=function(obj){
+            for(var i in obj){
+                this.dom.style[i]=obj[i];
+            }
+            return this;
+        }
+    }
+    var o1={
+        border:"1px,soild,red",
+        width:"400px",
+        height:"400px",
+        backgroundColor:"yellow",
+        display:'inline-table'
+    }
+    new divtag('div').appendto(document.body).css(o1);
+    new divtag('div').appendto(document.body).css(o1);
+    new divtag('div').appendto(document.body).css(o1);
+    //面向过程方法
+    var o=document.createElement('div');
+    document.body.appendChild(o);
+    o.style.border="1px,soild,red";
+    o.style.width="400px";
+    o.style.height="400px";
+    o.style.backgroundColor="pink";
+    o.style.display="inline-table";
+for(var i= 0;i<100;i++){
+
+    console.log(i);
+}
+</script>
+</body>
+</html>

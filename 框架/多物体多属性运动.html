@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #container{
+            height: 400px;
+            position: relative;
+            width: 100%;
+            border-bottom: 1px black solid;
+            text-align: center;
+            top: 50px;
+        }
+        #container div{
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            background: red;
+            float: left;
+            top:10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+</div>
+</body>
+</html>
+<script src="./myit.js"></script>
+<script>
+    function Animate(){
+        this.timer;
+        this.interval=16
+        this.queen=[];
+    };
+    Animate.prototype={
+        //用户使用方法
+        //公共
+        add:function(id,json,duration){
+            this._adapterMany(id,json,duration)
+            this._run()
+        },
+        //私有
+        //动画刷新定时器
+        _run:function(){
+            var that=this;
+            that.timer=setInterval(function(){that._loop();},that.interval);
+        },
+        _loop:function(){
+            var that = this;
+            for(var i = 0,len=this.queen.length;i<len;i++){
+                var _obj = this.queen[i]
+                that._move(_obj)
+            }
+        },
+        //样式对象转换  适配器
+        _adapterOne:function(id,json,duration){
+            var _obj={}
+            _obj.id = id
+            _obj.duration = duration
+            _obj.tween = 0
+            _obj.now = +new Date()
+            _obj.styles=this._getstyles(id,json)
+            return _obj
+        },
+        _adapterMany:function(id,json,duration){
+            var _obj = this._adapterOne(id,json,duration)
+            this.queen.push(_obj)
+        },
+        _getstyles:function(id,source){
+            var target=[];
+            for(var item in source){
+                var json={};
+                json.start=parseFloat(zit.css(id,item));
+                json.juli=parseFloat(source[item])-json.start;
+                json.property=item;
+                target.push(json);
+            }
+            return target;
+        },
+        //不断刷新
+        _move:function(_obj){
+            var that=this;
+            var pass=+new Date();
+            var styles=_obj.styles;
+            var id=_obj.id;
+            var tween=that._gettween(_obj.now,pass,_obj.shijian,"easeOutBounce");
+            if(tween>=1){
+                that._stop(id,styles);
+            }else{
+                that._manyproperty(id,styles,tween);
+
+            }
+        },
+        //获得动画进程
+        _gettween:function(now,pass,shijian,ease){
+            var eases = {
+                //线性匀速
+                linear:function (t, b, c, d){
+                    return (c - b) * (t/ d);
+                },
+                //弹性运动
+                easeOutBounce:function (t, b, c, d) {
+                    if ((t/=d) < (1/2.75)) {
+                        return c*(7.5625*t*t) + b;
+                    } else if (t < (2/2.75)) {
+                        return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+                    } else if (t < (2.5/2.75)) {
+                        return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+                    } else {
+                        return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+                    }
+                },
+                //其他
+                swing: function (t, b, c, d) {
+                    return this.easeOutQuad(t, b, c, d);
+                },
+                easeInQuad: function (t, b, c, d) {
+                    return c*(t/=d)*t + b;
+                },
+                easeOutQuad: function (t, b, c, d) {
+                    return -c *(t/=d)*(t-2) + b;
+                },
+                easeInOutQuad: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t + b;
+                    return -c/2 * ((--t)*(t-2) - 1) + b;
+                },
+                easeInCubic: function (t, b, c, d) {
+                    return c*(t/=d)*t*t + b;
+                },
+                easeOutCubic: function (t, b, c, d) {
+                    return c*((t=t/d-1)*t*t + 1) + b;
+                },
+                easeInOutCubic: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t + b;
+                    return c/2*((t-=2)*t*t + 2) + b;
+                },
+                easeInQuart: function (t, b, c, d) {
+                    return c*(t/=d)*t*t*t + b;
+                },
+                easeOutQuart: function (t, b, c, d) {
+                    return -c * ((t=t/d-1)*t*t*t - 1) + b;
+                },
+                easeInOutQuart: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t*t + b;
+                    return -c/2 * ((t-=2)*t*t*t - 2) + b;
+                },
+                easeInQuint: function (t, b, c, d) {
+                    return c*(t/=d)*t*t*t*t + b;
+                },
+                easeOutQuint: function (t, b, c, d) {
+                    return c*((t=t/d-1)*t*t*t*t + 1) + b;
+                },
+                easeInOutQuint: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return c/2*t*t*t*t*t + b;
+                    return c/2*((t-=2)*t*t*t*t + 2) + b;
+                },
+                easeInSine: function (t, b, c, d) {
+                    return -c * Math.cos(t/d * (Math.PI/2)) + c + b;
+                },
+                easeOutSine: function (t, b, c, d) {
+                    return c * Math.sin(t/d * (Math.PI/2)) + b;
+                },
+                easeInOutSine: function (t, b, c, d) {
+                    return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
+                },
+                easeInExpo: function (t, b, c, d) {
+                    return (t==0) ? b : c * Math.pow(2, 10 * (t/d - 1)) + b;
+                },
+                easeOutExpo: function (t, b, c, d) {
+                    return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
+                },
+                easeInOutExpo: function (t, b, c, d) {
+                    if (t==0) return b;
+                    if (t==d) return b+c;
+                    if ((t/=d/2) < 1) return c/2 * Math.pow(2, 10 * (t - 1)) + b;
+                    return c/2 * (-Math.pow(2, -10 * --t) + 2) + b;
+                },
+                easeInCirc: function (t, b, c, d) {
+                    return -c * (Math.sqrt(1 - (t/=d)*t) - 1) + b;
+                },
+                easeOutCirc: function (t, b, c, d) {
+                    return c * Math.sqrt(1 - (t=t/d-1)*t) + b;
+                },
+                easeInOutCirc: function (t, b, c, d) {
+                    if ((t/=d/2) < 1) return -c/2 * (Math.sqrt(1 - t*t) - 1) + b;
+                    return c/2 * (Math.sqrt(1 - (t-=2)*t) + 1) + b;
+                },
+                easeInElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    return -(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+                },
+                easeOutElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d)==1) return b+c;  if (!p) p=d*.3;
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    return a*Math.pow(2,-10*t) * Math.sin( (t*d-s)*(2*Math.PI)/p ) + c + b;
+                },
+                easeInOutElastic: function (t, b, c, d) {
+                    var s=1.70158;var p=0;var a=c;
+                    if (t==0) return b;  if ((t/=d/2)==2) return b+c;  if (!p) p=d*(.3*1.5);
+                    if (a < Math.abs(c)) { a=c; var s=p/4; }
+                    else var s = p/(2*Math.PI) * Math.asin (c/a);
+                    if (t < 1) return -.5*(a*Math.pow(2,10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )) + b;
+                    return a*Math.pow(2,-10*(t-=1)) * Math.sin( (t*d-s)*(2*Math.PI)/p )*.5 + c + b;
+                },
+                easeInBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    return c*(t/=d)*t*((s+1)*t - s) + b;
+                },
+                easeOutBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    return c*((t=t/d-1)*t*((s+1)*t + s) + 1) + b;
+                },
+                easeInOutBack: function (t, b, c, d, s) {
+                    if (s == undefined) s = 1.70158;
+                    if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+                    return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+                },
+                easeInBounce: function (t, b, c, d) {
+                    return c - this.easeOutBounce (d-t, 0, c, d) + b;
+                },
+                easeInOutBounce: function (t, b, c, d) {
+                    if (t < d/2) return this.easeInBounce (t*2, 0, c, d) * .5 + b;
+                    return this.easeOutBounce (t*2-d, 0, c, d) * .5 + c*.5 + b;
+                }
+            };
+            var yongshi=pass-now;
+            return eases[ease](yongshi,0,1,shijian);
+        },
+        //定时器停止
+        _stop:function(id,styles){
+            _manyproperty(id,styles,1)
+            clearInterval(this.timer);
+        },
+        //设置json中的多种属性
+        _manyproperty:function(id,styles,tween){
+            var that=this;
+            for(var i=0;i<styles.length;i++){
+                that._oneproperty(id,styles[i].property,styles[i].start,styles[i].juli,tween);
+            }
+        },
+        //设置单个属性
+        _oneproperty:function(id,name,start,juli,tween){
+            if(name=="opacity"){
+                zit.css(id,name,start+juli*tween);
+            }else{
+                zit.css(id,name,(start+juli*tween)+"px")
+            }
+        },
+        //变量回收、释放内存
+        _destory:function(){}
+    }
+    var animate = new Animate();
+    //思考入口
+    animate.add('#box1',{top:200,left:100,width:'100'},7000);
+
+    //如果我新增一个物体 -- 如何将其运动起来
+    //分析为什么使用数组
+    animate.add('#box2',{top:200,left:100,width:'100'},7000);
+    animate.add('#box3',{top:200,left:100,width:'100'},7000);
+    animate.add('#box4',{top:200,left:100,width:'100'},7000);
+</script>

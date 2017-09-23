@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 50px;
+            margin:10px;
+            border:1px solid yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="c1"></div>
+<div class="c2"></div>
+<div class="c3"></div>
+<div class="c1 c2"></div>
+<div class="c1 c3"></div>
+</body>
+<script>
+    /*if(document.getElementsByClassName){
+        return document.getElementsByClassName("c");
+    }
+    else{
+        //自己封装新函数
+    }*/
+   /* var support={};
+    //document.getElementsByClassName=123;
+    /!*support.getElementsByClassName=!!document.getElementsByClassName;*!/
+    support.getElementsByClassName=(function(){
+        var isexist=!!document.getElementsByClassName;
+        if(isexist && typeof document.getElementsByClassName==="function"){
+            var div=document.createElement("div");
+            var divwithclass=document.createElement("div");
+            divwithclass.className="c";
+            div.appendChild(divwithclass);
+            return div.getElementsByClassName("c")[0]===divwithclass;
+        }
+        return false;
+    })();*/
+    //我的写法不成功
+    /*function getclass(classname){
+        var classes1=document.getElementsByTagName("*");
+        var classes2=[];
+        for(var i=0;i<classes1.length;i++){
+            if((" "+classes1[i]+" ").indexOf(" "+classname+" ")!=-1){
+                classes2.push("classes1[i]");
+            }
+        }
+        return classes2;
+    };
+    function getclassn(classname){
+        if(document.getElementsByClassName){
+            document.getElementsByClassName(classname);
+        }else{
+            getclass(classname);
+        }
+    };
+    var c1 =getclassn("c1");
+    var c2 =getclassn("c2");
+    var c3 =getclassn("c3");*/
+    //视频写法
+    var getclass=function(classname,results){
+        results=results||[];
+        var temparr,i;
+        if(document.getElementsByClassName){
+            results.push.apply(results,document.getElementsByClassName(classname));
+        }else{
+            temparr=document.getElementsByTagName("*");
+            for(i=0;i<temparr.length;i++){
+                if((" "+temparr[i]+" ").indexOf(" "+classname+" ")!=-1){
+                    results.push(temparr[i]);
+                }
+            }
+
+        }
+        return results;
+    }
+    var c1 =getclass("c1");
+    for(var i=0;i<c1.length;i++){
+        c1[i].style.backgroundColor="red";
+    }
+    c1[2].style.backgroundColor="yellow";
+    var c2 =getclass("c2");
+    c2[0].style.backgroundColor="red";
+
+    var c3 =getclass("c3");
+    c3[0].style.backgroundColor="green";
+    //熟练上面写法
+    /*function getclass(classname,results){
+        results=results||[];
+        var temparr,i;
+        if(document.getElementsByClassName){
+            results.push.apply(results,document.getElementsByClassName(classname));
+        }else{
+            temperarr=document.getElementsByClassName("*");
+            for(i=0;i<temparr.length;i++){
+                if((" "+temparr[i]+" ").indexOf(" "+classname+" ")!=-1){
+                    results.push(temparr[i]);
+                }
+            }
+        }
+        return results;
+    };*/
+    //再写一次
+   /* function getclass(classname,results){
+        results=results||[];
+        if(document.getElementsByClassName){
+            results.push.apply(results,document.getElementsByClassName(classname));
+        }else{
+            var temparr=document.getElementsByClassName("*");
+            for(var i=0;i<temparr.length;i++){
+                if((""+temparr[i]+"").indexOf(classname)!=-1){
+                    results.push(temparr[i]);
+                }
+            }
+        }
+        return results;
+    };*/
+</script>
+</html>

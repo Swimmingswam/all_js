@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        select{
+            width: 100px;
+            height: 100px;
+            float:left;
+        }
+        div{
+            float:left;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function(){
+            $("#sel-all").on("click",function(){
+                $("#src-city option").appendTo("#tar-city");
+            });
+            $("#sel-none").on("click",function(){
+                $("#tar-city option").appendTo("#src-city");
+            });
+
+            $("#selected").on("click",function(){
+                $("#src-city option:selected").appendTo("#tar-city");
+            });
+            $("#removed").on("click",function(){
+                $("#tar-city option:selected").appendTo("#src-city");
+            });
+        })
+    </script>
+</head>
+<body>
+<select name="src-city" id="src-city" multiple>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">广州</option>
+    <option value="4">深圳</option>
+    <option value="5">中山</option>
+</select>
+<div id="box">
+    <button id="sel-all">&gt;&gt;</button><br />
+    <button id="sel-none">&lt;&lt;</button><br />
+    <button id="selected">&gt;</button><br />
+    <button id="removed">&lt;</button>
+</div>
+<select name="tar-city" id="tar-city" multiple>
+
+</select>
+</body>
+</html>

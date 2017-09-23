@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body,html{background: #000;}
+        #sore{width:100px;height:30px;color:#000;position:absolute;}
+        #container{width: 600px; height: 400px; background: #fff; margin: 20px auto; position: relative;}
+        span{display: inline-block; width: 50px; height: 50px; background: red; position: absolute;}
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="sore">击球总数：</div>
+</div>
+<script>
+    function random(begin,end){
+        return Math.floor(Math.random()*(end-begin))+begin;
+    }
+</script>
+<script>
+   /* function sore(){
+        var sore=0;
+        sore+=box.bindevent.call(this);
+        document.getElementById("sore").innerHTML=sore;
+    }*/
+
+    //小球基类
+    function box(){
+        this.dom=document.createElement("span");
+        this.x=200;
+        this.y=200;
+        this.dom.innerHTML=random(0,8);
+        this.dom.style.lineHeight="50px";
+        this.dom.style.textAlign="center";
+        this.dom.style.color="#fff";
+
+        this.vx =random(1,10);
+        this.vy =random(1,10);
+        this.timeBar = null;
+    }
+    box.prototype={
+        godie:function(){
+            this.bindevent();
+        },
+        bindevent:function(){
+            var that=this;
+            this.dom.addEventListener("click",function(){
+                that.dom.style.display="none";
+                document.getElementById("sore").innerHTML+=Math.floor(that.dom.innerHTML);
+            })
+        },
+        draw:function(){
+            this.x+=this.vx;
+            this.y+=this.vy;
+
+            if(this.x>550){
+                this.x=550;
+                this.vx=this.vx*(-1);
+            }
+            if(this.y>350){
+                this.y=350;
+                this.vy=this.vy*(-1);
+            }
+
+            this.dom.style.left=this.x+"px";
+            this.dom.style.top=this.y+"px";
+        },
+        add:function(){
+            this.draw();
+
+            this.godie();
+
+            document.getElementById("container").appendChild(this.dom);
+
+            this.looplife()
+        },
+        looplife:function(){
+            var that = this;
+            that.timeBar = setInterval(function(){
+                that.draw();
+            }, 33)
+        },
+
+    }
+    function greenbox(){
+        box.call(this);
+        this.dom.style.background="green";
+        this.dom.style.width=50;
+        this.dom.style.height=50;
+        this.dom.innerHTML=random(0,8);
+
+    }
+    greenbox.prototype=box.prototype;
+    function CurcleBox(){
+        box.call(this);
+        this.dom.style.borderRadius ='25';
+        this.dom.innerHTML=random(0,8);
+    }
+    CurcleBox.prototype =box.prototype;
+
+    function OrangeCurcleBox (){
+        box.call(this);
+        this.dom.style.background = 'orange';
+        this.dom.style.borderRadius = '50px';
+        this.dom.innerHTML=random(0,8);
+    }
+
+    OrangeCurcleBox.prototype =box.prototype;
+window.onload=function(){
+    var allboxes = [box, greenbox, CurcleBox, OrangeCurcleBox];
+    setInterval(function(){
+        var box = new allboxes[random(0,4)]();
+        box.add();
+    }, 1000);
+}
+
+</script>
+</body>
+</html>

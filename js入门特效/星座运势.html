@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width:350px;
+            height: 200px;
+            margin:100px auto;
+            border:1px solid #ccc;
+        }
+        .top{
+            padding-left:10px;
+            font:700 15px/35px "宋体";
+            color:#036;
+        }
+        .main{
+            padding:10px;
+        }
+        .tt{
+            overflow:hidden;
+        }
+        #left{
+            width: 50px;
+            height: 50px;
+            float:left;
+            background:url(./images/tubiao.png) no-repeat left top;
+            padding:-2px 8px;
+        }
+        .xia{
+            padding-top:5px;
+        }
+        .yunshi{
+            width: 80px;
+            height: 13px;
+            display:inline-block;
+            background:url(./images/star.png) no-repeat ;
+            position:relative;
+        }
+        #star{
+            width:72px;
+            height: 13px;
+            display:inline-block;
+            background:url(./images/star.png) no-repeat left bottom;
+            position:absolute;
+            left:0px;
+            right: 0px;
+        }
+        #td{
+            padding:10px;
+        }
+    </style>
+    <script>
+        window.onload=function() {
+            function $(id) {
+                return document.getElementById(id);
+            }
+            var arr=[9,9,6,9,7,7,9,10,5,8,7,5];
+            var tdarr=["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twlve"];
+            var sele=$("sele");
+            if(sele.value=0){
+                $("td").innerHTML="工作上，上司要求多，会来来去去的返工，没有效率。网络也容易添乱，时不时的信号不佳或者中断，...[详细]";
+                // $("left").style.backgroundPosition="left top";
+            }
+            sele.onchange=function(){
+                $("left").style.backgroundPosition="0"+(-this.value*50)+"px";
+                $("td").innerHTML=tdarr[this.value];
+                $("td").innerHTML=tdarr[this.value];
+                $("star").style.width=arr[this.value]*8+"px";
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="top">
+        星座运势
+    </div>
+    <div class="main">
+        <div class="tt">
+            <div id="left">
+            </div>
+            <div class="right">
+                <select name="" id="sele">
+                    <option value="0" class="kaishi">白羊座(03.21-04.19)</option>
+                    <option value="1">金牛座(04.20-05.20)</option>
+                    <option value="2">双子座(05.21-06.21)</option>
+                    <option value="3">巨蟹座(06.22-07.22)</option>
+                    <option value="4">狮子座(07.23-08.22)</option>
+                    <option value="5">处女座(08.23-09.22)</option>
+                    <option value="6">天秤座(09.23-10.23)</option>
+                    <option value="7">天蝎座(10.24-11.22)</option>
+                    <option value="8">射手座(11.23-12.21)</option>
+                    <option value="9">摩羯座(12.22-01.19)</option>
+                    <option value="10">水瓶座(01.20-02.18)</option>
+                    <option value="11">双鱼座(02.19-03.20)</option>
+                </select>
+                <div class="xia">
+                    今日运势:
+                    <span class="yunshi">
+                        <span id="star"></span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+        <div id="td">
+            工作上，上司要求多，会来来去去的返工，没有效率。网络也容易添乱，时不时的信号不佳或者中断，...[详细]
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            margin:10px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            function getclassname(classname){
+
+                if(document.getElementsByClassName){
+                    return document.getElementsByClassName(classname).length;
+                }
+                var arr=[];
+                var all=document.getElementsByTagName("*");
+                for(var i=0;i<all.length;i++){
+                    if(all[i].className==classname){
+                        arr.push(all[i]);
+                    }
+                }
+                return arr.length;
+            }
+            alert(getclassname("damo"));
+        }
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div class="damo one"></div>
+<div></div>
+<div class="damo t"></div>
+<div class="damo"></div>
+<div></div>
+<div class="damo"></div>
+<div></div>
+<div></div>
+</body>
+</html>

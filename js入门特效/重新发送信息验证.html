@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+  <script>
+    window.onload=function(){
+      var btn=document.getElementById("btn");
+      var count=3;
+      var textTime=null;
+      btn.onclick=function(){
+        this.disabled=true;
+        //clearInterval(textTime);
+        var that=this;
+        textTime=setInterval(sendtxtmessage,1000);
+        function sendtxtmessage(){
+          if(count>0){
+            count--;
+            that.innerHTML="还剩余"+count+"s";
+          }
+          else{
+            that.innerHTML="重新发送";
+            that.disabled=false;
+            count=3;
+            clearInterval(textTime);
+          }
+        }
+
+
+      }
+
+    }
+  </script>
+</head>
+<body>
+<input type=""/>
+<button id="btn">发送信息</button>
+</body>
+</html>

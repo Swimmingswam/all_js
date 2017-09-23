@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+
+    //数组的操作
+    var arr=[1,2,3,4,5,6];
+    //1.找最大值
+
+        var max=arr[0];
+        for(var i= 0;i<arr.length;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+       console.log(max);
+    //2.求和
+    var sum=0;
+        for(var i= 0;i<arr.length;i++){
+            sum+=arr[i];
+        }
+        console.log(sum);
+    //3.找4的索引
+    var result=-1;
+        for(var i= 0;i<arr.length;i++){
+            if(arr[i]===4){
+                result=i;
+                break;
+            }
+        }
+        console.log(result);
+    //封装each1
+    function each(arr,fn){
+        for(var i= 0;i<arr.length;i++){
+            fn(i,arr[i]);
+        }
+    }
+    //求最大值
+    var max=arr[0];
+    each(arr,function(i,v){
+        if(max<v){
+            max=v;
+        }
+    });
+    console.log(max);
+    //求和
+    var sum=0;
+    each(arr,function(i,v){
+        sum+=v;
+    });
+    console.log(sum);
+    //找4的索引
+    var lookfor=-1;
+    each(arr,function(i,v){
+        if(arr[i]===4){
+            lookfor=i;
+        }
+    })
+    console.log(lookfor);
+    //找数字num索引改良版
+    /*function each2(arr,num,fn){
+     for(var i=0;i<arr.length;i++){
+     if(fn(i,arr[i],num)===false){
+     break;
+     }
+     }
+     return result;
+     };
+     var result=-1;
+
+     console.log(each2(arr,4,function(i,v,num){
+     if(v===num){
+     result=i;
+     return false;
+     }
+     return 2;
+     }));*/
+    //找4索引的改良版
+   /* function each2(arr,fn){
+        for(var i=0;i<arr.length;i++){
+            if(fn(i,arr[i])===false){
+                break;
+            }
+        }
+        return result;
+    };
+    var result=-1;
+
+    console.log(each2(arr,function(i,v){
+        if(v===4){
+            result=i;
+            return false;
+        }
+        return 2;
+    }));*/
+//each()最终版
+    function each(arr,fn){
+        for(var i=0;i<arr.length;i++){
+            if(fn.call(arr[i],i,arr[i])===false){
+                break;
+            }
+        }
+    };
+    /*//找最大值
+    function max(){
+        if(max<arr[i]){
+            max=arr[i];
+        }
+    };
+    var max=0;
+    console.log(each(arr,max))*/
+</script>
+</html>

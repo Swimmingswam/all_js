@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .main{
+            margin:200px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .pro{
+            width: 230px;
+            height: 230px;
+            border:1px solid #ccc;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+</div>
+</body>
+<script src="../jquery-1.11.2.js"></script>
+<script>
+    $(document).ready(function() {
+        function product(name, description, price) {
+            this.name = name;
+            this.des = description;
+            this.price = price;
+        }
+
+        product.prototype = {
+            buy: function () {
+                alert("已下单");
+            },
+            car: function () {
+                alert("即将售馨");
+            }
+        }
+        var product1 = new product("iphone", "手机", 3200);
+        var product2 = new product("huawei", "手机", 1800);
+        var product3 = new product("nicai", "手机", 998);
+        var product4 = new product("sansung", "手机", 3000);
+        var product5 = new product("opera", "手机", 2000);
+        var products = [product1, product2, product3, product4, product5];
+        product.prototype.binddom=function(){
+            var str="";
+            str+='<div class="pro">';
+            str+='<h2 class="pname">'+products[k].name+'</h2>';
+            str+='<h3 class="pdes">'+products[k].des+'</h3>';
+            str+=' <div class="pprice">'+products[k].price+'</div>';
+            str+='<br />';
+            str+='<button class="pbuy">马上购买</button>';
+            str+=' <button class="pcar">放入购物车</button>';
+            str+='</div>';
+            return str;
+        };
+        var str=""
+        for(var k=0;k<products.length;k++){
+            str+=products[k].binddom();
+        }
+        $(".main").html(str);
+        $(".pbuy").on("click",function(){
+            product1.buy();
+        });
+        $(".pcar").on("click",function(){
+            product1.car();
+        })
+    });
+
+</script>
+</html>

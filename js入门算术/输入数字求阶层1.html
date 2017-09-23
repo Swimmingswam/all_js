@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="jieceng"/><br/>
+<button id="jisuan">计算</button>
+<br/>
+结果是：<span id="answer"></span>
+<script>
+    /*var jisuan=document.getElementById("jisuan");
+     var answer1=document.getElementById("answer");
+     jisuan.onclick = function(){
+     var jieceng=document.getElementById("jieceng").value;
+     var answer=1;
+     for (var i=1;i<=jieceng;i++) {
+     answer=answer*i;
+     }
+     answer1.innerHTML=answer;
+     }*/
+    var jisuan = document.getElementById("jisuan");
+    var answer = document.getElementById("answer");
+    var jieceng = document.getElementById("jieceng");
+
+    var n = 0;
+    jieceng.onchange = function(){
+        n = jieceng.value;
+    };
+
+    function factorial(){
+        var value = n;
+        if (n > 1) {
+            n = n - 1;
+            return  value * factorial(value - 1);
+        } else {
+           return 1;
+        }
+    }
+    jisuan.onclick = function (e) {
+        console.log(e);
+        answer.innerHTML = factorial();
+
+    }
+</script>
+</body>
+</html>
+

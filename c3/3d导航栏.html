@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        *::after{
+            box-sizing: border-box;
+        }
+        body{
+            display:flex;
+        }
+        nav{
+            margin:200px auto;
+            display:inline-block;
+        }
+        nav a{
+            display:inline-block;
+            text-decoration: none;
+            color:#fff;
+            text-align: center;
+            line-height: 30px;
+            perspective: 700px;
+        }
+        nav a span::after{
+            content: attr(data-bg);
+            position:absolute;
+            color:#fff;
+            top:100%;
+            left:0;
+            width: 100%;
+            height: 100%;
+            background-color:#2195de;
+            transition: all 1s;
+            transform: rotateX(-90deg);
+            transform-origin: top;
+        }
+        nav a span:hover{
+            transform: rotateX(90deg) translateY(-15px);
+            transform-origin: top;
+        }
+        nav a span{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            transition: all 1s;
+            background-color: #0965a0;
+            line-height: 30px;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<nav>
+    <a href="" bg="red" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="">
+        <span  data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+    <a href="" >
+        <span data-bg="Home">Swimming</span>
+    </a>
+</nav>
+</body>
+</html>

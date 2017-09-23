@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 400px;
+            height: 400px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+<script>
+    var push=[].push;
+    try{
+        push;
+    }catch(e){
+        push=mypush();
+    }
+    function mypush(target,els){
+        var j=target.length,
+                i=0;
+        while((target[j++]=els[i++])){}
+        target.length=j-1;
+    }
+    /*function gettag(tag,results){
+        results=results||[];
+        push(results,document.getElementsByTagName(tag));
+        return results;
+    };*/
+    var arr=[];
+    arr.push("0");
+   alert(arr);
+    //gettag("div").style.backgroundColor="pink";
+
+
+
+</script>
+</html>

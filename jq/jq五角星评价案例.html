@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0px; padding:0px;}
+        li{
+            font:900 35px/35px "宋体";
+            float:left;
+            color:red;
+            list-style:none;
+        }
+    </style>
+    <script src="./jquery.js"></script>
+    <script>
+        $(function(){
+            var sele="★";
+            var none="☆";
+            $("li").on("mouseenter",function(){
+                $(this).text(sele).prevAll().text(sele).end().nextAll().text(none);
+            });
+            $("li").on("click",function(){
+                $(this).addClass("sele").siblings().removeClass("sele");
+            });
+            $("li").on("mouseleave",function(){
+               //$("li").text(none);此处有问题
+                $("sele").text(sele).prevAll().text(sele).end().nextAll().text(none);
+            })
+        });
+
+    </script>
+</head>
+<body>
+<div>
+    <ul>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</div>
+</body>
+</html>

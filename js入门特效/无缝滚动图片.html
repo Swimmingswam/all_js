@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0px; padding:0px;}
+        #box{
+            width: 580px;
+            height: 184px;
+            margin:100px auto;
+            position:relative;
+            overflow:hidden;
+        }
+        #box ul li{
+            list-style: none;
+        }
+        img{
+            vertical-align: top;
+            float:left;
+        }
+        #box ul{
+            background-color: pink;
+            width:400%;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><img src="./images/148972260233130128.jpg" alt=""/></li>
+        <li><img src="./images/148972286370958521.jpg" alt=""/></li>
+        <li><img src="./images/148973161922274417.jpg" alt=""/></li>
+        <li><img src="./images/148974061577356798.jpg" alt=""/></li>
+        <li><img src="./images/148972260233130128.jpg" alt=""/></li>
+        <li><img src="./images/148972286370958521.jpg" alt=""/></li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    var scroll=box.children[0];
+    var num=0;
+    var timer=null;
+    timer=setInterval(autoplay,10);
+    function autoplay(){
+        num--;
+        //console.log(num);
+        if(num<=-1160){
+            scroll.style.left=0;
+            num=0;
+        }
+        else{
+            scroll.style.left=num+"px";
+        }
+        /*num<=-1160 ? num=0:num;
+        scroll.style.left=num+"px";*/
+    }
+    box.onmouseover=function(){
+        clearInterval(timer);
+    }
+    box.onmouseout=function(){
+        timer=setInterval(autoplay,10);
+    }
+</script>

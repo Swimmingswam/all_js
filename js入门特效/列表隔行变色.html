@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            border:1px solid #f1f1f1;
+        }
+        ul li{
+            line-height:30px;
+            margin:5px;
+            list-style-type:none;
+            cursor:pointer;
+        }
+        li span{
+            margin:5px;
+
+        }
+        .current{
+            color:red!important;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+    <li><span>2017年</span><span>4月</span><span>11日</span></li>
+</ul>
+<script>
+    window.onload=function(){
+        var lis=document.getElementsByTagName("li");
+        for(var i=0;i<lis.length;i++){
+            if(i%2==0)
+            {
+                lis[i].style.backgroundColor="#eee";
+            }
+            lis[i].onmouseover=function(){
+                this.className="current";
+            }
+            lis[i].onmouseout=function(){
+                this.className="";
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

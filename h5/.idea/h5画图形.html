@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="mycanvas1" width:600px height:600  style="border:1px solid #c3c3c3;"></canvas>
+<canvas id="mycanvas2" width:600px height:600  style="border:1px solid #c3c3c3;"></canvas>
+<canvas id="mycanvas3" width:600px height:600  style="border:1px solid #c3c3c3;"></canvas>
+<canvas id="mycanvas4" width:600px height:600  style="border:1px solid #c3c3c3;"></canvas>
+<canvas id="mycanvas5" width:600px height:600  style="border:1px solid #c3c3c3;"></canvas>
+<!--svg图像-->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+    <polygon points="100,10 40,180 190,60 10,60 160,180"
+             style="fill:red;stroke:blue;stroke-width:5;fill-rule:evenodd;" />
+</svg>
+<script>
+    var picture1=document.getElementById("mycanvas1");
+    var picture2=document.getElementById("mycanvas2");
+    var picture3=document.getElementById("mycanvas3");
+    var picture4=document.getElementById("mycanvas4");
+    var picture5=document.getElementById("mycanvas5");
+    var cxt1=picture1.getContext("2d");
+    var cxt2=picture2.getContext("2d");
+    var cxt3=picture3.getContext("2d");
+    var cxt4=picture4.getContext("2d");
+    var cxt5=picture5.getContext("2d");
+    //长方形
+    cxt1.fillStyle="red";
+    cxt1.fillRect(0,0,150,75);
+    //线
+    cxt2.fillStyle="blue";
+    cxt2.moveTo(10,10);
+    cxt2.lineTo(150,50);
+   /* cxt2.moveTo(30,10);*/
+    cxt2.lineTo(10,50);
+    cxt2.stroke();
+    //圆
+    cxt3.fillStyle="yellow";
+    cxt3.beginPath();
+    cxt3.arc(70,18,15,0,Math.PI*2,true);
+    cxt3.closePath();
+    cxt3.fill();
+    //渐变背景
+    var grd=cxt4.createLinearGradient(0,0,175,50);
+    grd.addColorStop(0,"#FF0000");
+    grd.addColorStop(1,"#00FF00");
+    cxt4.fillStyle=grd;
+    cxt4.fillRect(0,0,175,50);
+    //图像
+    var img=new Image()
+    img.src="http://www.w3school.com.cn/i/ct_html5_canvas_image.gif"
+    cxt5.drawImage(img,0,0);
+
+</script>
+</body>
+</html>

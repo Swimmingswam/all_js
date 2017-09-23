@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>js</title>
+ </head>
+ <body>
+ <div id="code" style="display:none;">
+     var max=a>b?a:b;
+     max=max>c?max:c;
+     return max;
+ </div>
+  <script type="text/javascript">
+   /*
+   var box = 100;
+   var age = box++
+   
+   /*b++,�ȸ�ֵ���ۼӡ�++b,���ۼ��ٸ�ֵ*/
+   
+   
+  /*
+  var box = NaN!=NaN&&0>-1;
+   alert(box);
+   function box1(){
+   	alert('run it');
+   }
+   box1();
+   function box2(name,age){
+   	alert('my name is'+name+""+'and i am'+age);
+   }
+   box2('zym',20);
+   */
+   /*
+   function box3(){
+   	 return('back');
+   }
+   alert(box3());
+   function box4(name,age){
+   	return('my name is'+name+""+'and i am'+age);
+   }
+   alert(box4('zym',20));
+   function box5(){
+   	return arguments[2]+'qq'+arguments[0];
+   	
+   }
+   alert(box5(1,2,3));
+   function box6(){
+   	return arguments.length;
+   }
+   alert(box6(1,7,8,9));
+   function box7(){
+   	var sum=0;
+   	if(arguments.length==0) return sum;
+   	for(var i=0;i<arguments.length;i++){
+   		sum=sum+arguments[i];
+   	}
+    return sum;
+   }
+   alert(box7(5,6,7));
+  
+  function chengfa(){
+   	var sum=1;
+   	if(arguments.length==0) return sum;
+   	for(var u=0;u<arguments.length;u++){
+   	 sum=sum*arguments[u];
+   	}
+   	return sum;
+   }
+   alert(chengfa(1,2,4));
+   
+   var bijiao=100;
+   if(bijiao>50) alert(1);alert(0);
+  
+   var bijiao2=100;
+   if(bijiao2>50){
+   	alert(1);
+   	alert(0);
+   }
+   
+    var xiangbi="ee";
+    switch(xiangbi){
+    	case "swim":
+    	alert('true');
+      break;
+    	case "victor":
+    	alert('false');
+    	break;
+    	case "123":
+    	alert('both');
+    	break;
+    	default:
+    	alert("error");
+    }
+    
+   var box=1;
+   do{
+     alert(box);
+     box++;
+   }
+   while(box<=5);
+   alert(box-1);
+   
+   var box=1;
+   while(box>=5){
+   	alert(box);
+   	box++;
+   	
+   	var box={
+   		"Name":"zym",
+   		"age":20,
+   		"hobby":'it'
+   }
+   for(var q in box){
+      alert(q);	
+   }
+   
+   for(var box=1;box<=5;box++){
+   	alert(box);
+   }
+   for(var box=1;box<=8;box++){
+   	if(box==4)break;
+   	document.write(box);
+  
+   for(var box=1;box<=10;box++){
+    if (box==5) continue;
+    document.write(box);
+  }
+  
+  //var pat=new RegExp('book','ig');
+  var pat=/book/im;
+  var str='i have a sssBooksss';
+  alert(pat.test(str));
+  document.write(pat.exec(str));
+
+  var pat=/boxl/ig;
+  var str="this is a box,and that is a box too";
+  //document.write(str.match(pat));
+  //document.write(str.search(pat));
+  //alert(str.replace(pat,'girl'));
+  //alert(str.split(pat));
+  
+  //var pat=/(g)oogle/;
+ // var str='this is a google';
+ // pat.test(str);
+  //alert(RegExp.input);
+  var pat1=/google/;
+  var str1='this is a google xngnxgnx';
+  pat1.test(str1);
+ // document.write(RegExp.input);
+  //alert(RegExp.rightContext);
+ // alert(RegExp.lastMatch);  
+  alert(RegExp.['$+']);//?
+  //alert(RegExp.lastParen);   //?
+ 
+  var box=new Object();
+  var box=Object();
+  box.name='zym';
+  box.age=20;
+  alert(box.name);
+  alert(box['age']);
+   
+  var box={
+  	name:'zym',
+  	age:20
+  };
+  alert(box.name);
+  alert(box['age']);
+  
+  var box=Object();
+  box.name='zym';
+  box.age=20;
+  document.write(box.name);
+  document.write(box.age);
+  document.write(box['age']);
+  
+  
+  var box=Object();
+  box.name='zym';
+  box.run=function(){
+  	return 'it is running';
+  };
+  alert(box.run());
+  alert(box['name']);
+ // delete box.name;
+  //document.write(box.name);
+  delete box['name'];
+  document.write(box['name'])
+  
+  function box(obj){
+  	if(obj.name!=undefined) alert(obj.name);
+  	
+  }
+  box({
+  	name:'zym'
+  });
+ 
+  var box=['a','aa','aaa'];
+  alert(box[0]);
+  alert(box);
+  box[4]='aaaa';
+  alert(box);
+   
+   var out=1;
+   var i=1;
+   while(i<=10){
+   	i++;
+   	if(i%2) continue;
+   	out*=i;
+   	
+   }
+   alert(out);
+   
+   var out=1;
+   for(var i=1;i<=10;i++){;
+   if(i%2) continue;
+   out*=i;
+ }
+ 
+   alert(out);
+   
+   var out=0;
+   for(var i=1;i<101;i++){
+   	out+=i;
+   }
+   alert(out);
+   
+   var out=0;
+   var i=0;
+   while(i<=99){
+   	i++;
+   	out+=i;
+   }
+   alert(out);
+  
+   var out=1;
+   for(var i=1;i<=50;i++){
+   	if(i%2) out+=i;
+   	continue;
+   }
+   alert(out);
+    
+    var out=1;
+    var i=1;
+    while(i<=49){
+    	i++;
+    	if(i%2) out+=i;
+    	continue;
+    }
+    alert(out);
+
+    var a=1;
+    var b='1';
+    alert(a===b);
+   var o={};
+   o.constructor;
+   function Object(){123}
+alert(typeof o.constructor);
+function Hero(name){
+ this.name=name;
+
+}*/
+   /*var h=new Hero("one");
+   h.name="123"
+   console.log(h.constructor);
+   console.log(h.name);
+   var h1=new h.constructor("two");
+   console.log(h1.constructor);
+   console.log(h1.name);
+   console.log(Hero());
+   var o=Object();
+   console.log(o.constructor);
+   var person={age:20};
+   var person1=person;
+   console.log(person1.age);
+   person1.age=25;
+   console.log(person1.age);
+   console.log(person.age);
+var re=/j.*o/i;
+   var ra=new String("i love Javascript");
+      alert(ra.search(re));
+      var email="915860430@qq.com";
+      var usename=email.replace(/(.*)@(.*)/ig,"$2");
+      var usename2=email.replace(/(.*)@(.*)/ig,"$1");
+      console.log(usename);
+      console.log(usename2);
+      var s= new String("HelloJavascriptWorld");
+   console.log(s.replace(/[A-Z]/g," "+"$&"));
+var glob;
+      var re=/(.*)@(.*)\.(.*)/;
+      var callback=function(){
+          glob=arguments;
+          return "Fullname is :"+arguments[0]+"  detil is :"+arguments[1]+" at "+arguments[2]+" dot "+arguments[3];
+      }
+      console.log("915860430@qq.com".replace(re,callback));
+   console.log(glob);
+function F(){
+    function C(){
+        return this;
+    }
+    return C();
+}
+      var o=new F();
+      console.log(o);
+      function F(){
+          this.a=1;
+          return false;
+      }
+      console.log(typeof F())
+   c=[1,2,[1,2]];
+   a=c.sort();
+   console.log(a);
+   b=c.join("---");
+   console.log(b);;
+    var human={
+    hair:true,
+    feeds:"rice",
+    breathes:"air",
+   }
+   function woman(name){
+       sex:"female";
+       hair:"long";
+       name:this.name;
+   }
+   woman.prototype=human;
+   var zym=new woman('zym');
+   zym.feeds="ftuit";
+   zym.breathes="o2";
+   alert(zym.__proto__===human);
+   alert(woman.__proto__==human);
+
+   if(typeof String.prototype.reverse!=='function') {
+       String.prototype.reverse = function () {
+           return Array.prototype.reverse.apply(this.split('')).join("");
+       }
+   }
+console.log("hallo world".reverse());
+   Array.prototype.inArray=function(needle){
+       for(var i= 0,len=this.length;i<len;i++){
+           if(this[i]===needle){
+               return true;
+           }
+       }
+       return false;
+   };
+   var color=['1','2','3'];
+   console.log(color.inArray('3'));
+   console.log(color.inArray('5'));
+function shape(name){
+    this.name=name;
+    this.toString=function(){
+        return this.name;
+    };
+};
+function twoDTriangle(){
+    this.name="2D shape";
+};
+function triangle(side,height){
+    this.name="triangle";
+    this.side=side;
+    this.height=height;
+    this.getArea=function(){;
+        return this.side*this.height/2;
+    };
+};
+   var b={
+       age:56,
+       name:123
+   };
+twoDTriangle.prototype=new shape();
+triangle.prototype=new twoDTriangle();
+   var triangle1=new triangle(5,2);
+   var twoDTriangle1=new twoDTriangle();
+   var shape1=new shape('abc');
+   for(var prop in shape1){
+       console.log(prop+'='+shape1[prop]);
+   };
+   for(var prop in twoDTriangle1){
+       console.log(prop+'='+twoDTriangle1[prop]);
+   };
+   for(var prop in triangle1){
+       console.log(prop+'='+triangle1[prop]);
+   }
+
+      console.log(twoDTriangle.prototype.constructor);
+      console.log(triangle.prototype.constructor);
+      console.log(shape.prototype.constructor);
+      function shape(){};
+      shape.prototype.name='shape';
+      shape.prototype.toString=function(){
+          return this.name;
+      };
+      function twoDTriangle(){};
+      twoDTriangle.prototype=new shape();
+      twoDTriangle.prototype.constructor=twoDTriangle;
+      console.log(twoDTriangle.prototype.constructor);
+      console.log(twoDTriangle.prototype.name);
+      function shape(){}
+      shape.prototype.name="shape";
+      shape.prototype.toString=function(){
+          return this.name;
+      };
+      function F(){};
+      function twod(){};
+      twod.prototype=new F();
+      F.prototype=shape.prototype;
+   //F.prototype=twod.prototype;
+      twod.prototype.constructor=twod;
+   twod.uber=shape.prototype;
+      twod.prototype.name='twod';
+      function sanjiao(side,height){
+          this.side=side;
+          this.height=height;
+      };
+      sanjiao.prototype=new F();
+      sanjiao.prototype.constructor=sanjiao;
+   sanjiao.uber=twod.prototype;
+      sanjiao.prototype.name='sanjiao';
+      sanjiao.prototype.getArea=function(){return this.side*this.height/2};
+      F.prototype=twod.prototype;
+   //F.prototype=shape.prototype;
+      var my=new sanjiao(5,10);
+      console.log(my.toString());
+   function extend(child,parent){
+       var F=function(){};
+       F.prototype=parent.prototype;
+       child.prototype=new F();
+       child.prototype.constructor=child;
+       child.uber=parent.prototype;
+   }
+      function shape(){};
+      shape.prototype.name="shape";
+      shape.prototype.toString=function(){
+          return this.constructor.uber ? this.constructor.uber.toString()+','+this.name:this.name;
+      }
+      function twod(){};
+      extend(twod,shape);
+      twod.prototype.name='2d';
+      function sanjiao(side,height){
+          this.side=side;
+          this.height=height;
+      };
+      extend(sanjiao,twod);
+      sanjiao.prototype.name="sanjiaoxing";
+      sanjiao.prototype.getArea=function()
+      {
+          return this.side*this.height/2
+      };
+      console.log(new sanjiao().toString());
+   function objectplus(o,stuff){
+       var n;
+       function F(){};
+       F.prototype=o;
+       n=new F();
+       n.uber=o;
+       for(var i in stuff){
+           n[i]=stuff[i];
+       }
+       return n;
+   }
+      var shape={
+       name:"shape",
+       tostring:function(){
+           return this.name;
+       }
+      };
+      var twod=objectplus(shape,{
+          name:"twod",
+          tostring:function(){
+              return this.uber.tostring()+','+ this.name;
+          }
+      });
+      var sanjiao=objectplus(twod,{
+          name:"sanjiao",
+          getArea:function(side,height){
+              return this.side*this.height/2;
+          },
+          side:0,
+          height:0
+      });
+      var my=objectplus(sanjiao,{
+          side:4,
+          height:4,
+          //name:"my"
+      });
+      console.log(my.getArea());
+      console.log(my.tostring());
+   function multi(){
+       var n={},
+               stuff,
+               j=0,
+               len=arguments.length;
+       for(j=0;j<len;j++){
+           stuff=arguments[i];
+           for(var i in stuff){
+               if(stuff.hasOwnProperty(i)){
+                   n[i]=stuff[i];
+               }
+           }
+       }
+       return n;
+   }
+   var shape={
+       name:"shape",
+       tostring:function(){
+           return this.name;
+       }
+   };
+      var twod={
+          name:"2D",
+          dimansions:2
+      }
+      var sanjiao=multi(shape,twod,{
+          name:"sanjiao",
+          getArea:function(){
+              return this.side*this.height/2;
+          },
+          side:5,
+          height:10
+      });
+
+      console.log(sanjiao.dimansions);
+      function mix(o1,o2){
+          for(var i in o2){
+              o1[i]=o2[i];
+          }
+      }
+      var o2={name:123};
+      var o1={age:20};
+      mix(o1,o2);
+   //浅拷贝案例
+      var p={
+          name:"zym",
+          age:20,
+          copy:function(){
+              var n={};
+              for(var i in this){
+                  n[i]=this[i];
+              };
+              return n;
+          }
+      }
+      var p1= p.copy();
+      p.name="syz";
+      p.age=40;
+   //深拷贝案例
+      function deepcopy(){
+          var n={};
+          for(var i in this){
+              if(typeof this[i]!=="object"){
+                  n[i]=this[i];
+              }
+              else{
+                  n[i]=this[i].deepcopy();
+              }
+          }
+          return n;
+      }
+      var car={name:"falali"};
+      var p={
+          name:"zym",
+          age:20,
+          car:car
+      };
+      car.deepcopy=deepcopy;
+      p.deepcopy=deepcopy;
+      var p1= p.deepcopy();
+   p.name="syz";
+   p.age="40";
+   p.car="xuefulan";
+      //混合多个对象的属性进一个对象obj
+      function mixall(obj,obj1,obj2,obj3){
+          var all=arguments;
+          for(var i = 1;i<all.length;i++)
+          {
+              for(var k in all[i]){
+                obj[k]=all[i][k];
+              }
+          }
+          return obj;
+      }
+      var obj={
+          name:123
+      };
+      var obj1={
+          age:456
+      };
+      var obj2={
+          sex:789
+      };
+      var obj3={
+          car:101112
+      };
+      mixall(obj,obj1,obj2,obj3);
+      //返回对象所有属性和调用其方法
+      function act(o){
+          for(var i in o){
+              if(typeof o[i]==='function'){
+                  o[i]();
+              }
+              else{
+                  console.log(i+':'+o[i]);
+              }
+          }
+      }
+      var obj={
+          name:123,
+          age:20,
+          say:function(){
+              console.log("hello!")
+          }
+      }
+      act(obj);
+      //把对象o的属性和方法全部拷贝给p对象
+      var o={
+          name:123,
+          age:456,
+          sex:789
+      };
+   o.copyto=function(p){
+       for(var i in o){
+           p[i]=this[i];
+       }
+   }
+      var p1={};
+   o.copyto(p1);*/
+  /* //喷子
+   console.log(1);
+   console.log(2);
+  var er;
+      try{
+          er=new Error("客户是sbsb！！haha");
+          throw er;
+      }
+      catch(e){
+          console.log("程序报错啦报错啦~~，楼主才sbsb")
+      }
+   console.log(1);
+   console.log(2);
+      //构造person对象
+      function createperson(name,age,sex){
+          var p={};
+          p.name=name;
+          p.age=age;
+          p.sex=sex;
+          return p;
+      }
+      createperson('zym',20,'girl');
+      //创建一个n行m列的表格,l为表格外边框线的宽度值
+      function createchart(n,m,l){
+          var table=document.createElement("table");
+          var tbody=document.createElement("tbody");
+          table.appendChild(tbody);
+          document.body.appendChild(table);
+          for(var i = 0;i<n;i++){
+              var tr=document.createElement("tr");
+              tbody.appendChild(tr);
+              for(var j = 0;j<m;j++){
+                  var td=document.createElement("td");
+                  var txt=document.createTextNode('');
+                  td.appendChild(txt);
+                  tr.appendChild(td);
+                  td.width=200;
+                  td.height=50;
+              }
+          }
+          table.setAttribute("border",l);
+      }
+      createchart(4,3,3);*/
+
+
+      /*function person(name,age){
+          var aa=function(){
+              console.log('hello');
+          }
+          this.name=name;
+          this.age=age;
+          this.sayhello=aa;
+
+      };
+     var p1=new person(123,123);
+      var p2=new person(123,123);
+
+
+     /!* console.log(p1==p2);//false
+      console.log(p1.name==p2.name);//true
+      console.log(p1.name===undefined);//true*!/
+      console.log(p1.sayhello==p2.sayhello);//内部false, 外部true,内匿名false，外匿名true*/
+
+
+      /*function person(name,sex,age){
+          this.name=name;
+          this.sex=sex;
+          this.age=age;
+      };
+      person.prototype={
+          name:"run!",
+          breathe:"air",
+          feed:"food"
+      };
+      var p1=new person('a','mm',10);
+      //var p2=new person('b','gg',18);
+      //var p3=new person('c','mm',20);
+      console.log(p1.name);
+      //p1.removeAttribute("name");          这样不可以？
+   console.log(p1.name);
+     /!* p1.move="walk";
+      console.log(p1.move);*!/
+*/
+     /* var person=function(){
+
+      };
+      var p1={};
+      p1.constructor=person;
+      var p2=new person();
+      console.log(p1.constructor===p2.constructor);//true，则上面两种创建p1p2的方法作用一样吗？*/
+      //创建数据表格
+      /*var data1=[
+          {name5:'person1',age:11,sex:"g",sch:"123"},
+          {name5:'person2',age:12,sex:"g",sch:"123"},
+          {name5:'person3',age:13,sex:"m",sch:"123"},
+          {name5:'person4',age:14,sex:"g",sch:"123"},
+          {name5:'person5',age:15,sex:"m",sch:"123"},
+          {name5:'person6',age:16,sex:"g",sch:"123"},
+          {name5:'person6',age:16,sex:"g",sch:"123"},
+          {name5:'person6',age:16,sex:"g",sch:"123"},
+          {name5:'person6',age:16,sex:"g",sch:"123"},
+          {name5:'person6',age:16,sex:"g",sch:"123"},
+          {name5:'person6',age:16,sex:"g",sch:"123"}
+   ];*/
+      /*function ce(node){
+          document.createElement(node);
+      }
+      function ac(parsent,child){
+          parsent.appendChild(child);
+      }
+      var table=ce(table);
+      var thead=ce(thead);
+      var tbody=ce(tbody);
+      ac(document.getElementsByTagName('body')[0],table);
+      ac(table,thead);
+      ac(table,tbody);*/
+      /*function cE(node){
+          document.createElement(node);
+      }*/
+    /*  function createchart2(data){
+          var table=document.createElement("table");
+          var thead=document.createElement("thead");
+          var tbody=document.createElement("tbody");
+          /!*var table=cE('table');
+          var thead=cE('thead');
+          var tbody=cE('tbody');*!/
+          table.appendChild(thead);
+          table.appendChild(tbody);
+          //
+          var htr=document.createElement("tr");
+          for(var i in data[0]){
+              var th=document.createElement("th");
+              th.appendChild(document.createTextNode(i));
+              htr.appendChild(th);
+          }
+          thead.appendChild(htr);
+          //
+          for(var j = 0;j<data.length;j++){
+              var tr=document.createElement("tr");
+              for(var k in data[j]){
+                  var td=document.createElement("td");
+                  td.appendChild(document.createTextNode(data[j][k]));
+                  tr.appendChild(td);
+              }
+              tbody.appendChild(tr);
+          }
+          table.border=1;
+          document.body.appendChild(table);
+      }
+   createchart2(data1);*/
+   /*function mix(obj,obj1){
+       for(var k in obj1){
+               obj[k]=obj1[k];
+       }
+       return obj;
+   }
+   function p(){
+       name:"123";
+   }
+      var p0 =new p();
+      var p1={
+          sex:'1'
+      }
+      mix(p1,p0);
+      p.prototype.age=12;
+      console.log(p0.age);//12
+      console.log(p1.age);//unddefined*/
+/*function tag(node) {
+    var n = document.createElement(node);
+    return n;
+};
+      function o(node){
+          create=tag(node);
+      };
+   o.prototype={
+       document.body.appendChild(this)
+   }
+      var o1=new o();*/
+
+      /*function person(){};
+      var p=new person();
+      console.log(p.constructor);//person(){}
+      console.log(person.constructor);//function(){}
+   console.log(person.prototype.constructor=== p.constructor);//true?
+     console.log(p.prototype);//underfined
+     console.log(p.constructor.prototype);//可通过p.construstor访问到prototype原型
+     console.log(p.constructor===person);//true
+     console.log(p.constructor.prototype===person.prototype);//true
+     console.log(p.constructor.prototype===p.__proto__);//true*/
+ /*function arr(){};
+      arr.prototype=[];
+      arr.prototype.sum=function(){
+          return 123;
+      };
+      var array=[1,2,3,4,5];
+      array.constructor=arr;
+      console.log(array.sum);
+      console.log(arr.prorotype.sum.apply(array));*/
+
+      /*var array=[];
+      var arr=Object.create(array);
+      console.log(arr.push('1','2','3','4','5'));
+      console.log(arr);
+      for(var i=0;i<arr.length;i++){
+          console.log(arr[i]);
+      }
+     console.log(arr.constructor);*/
+      /*var o={};
+      var o1=Object.create(o);
+      console.log(o1.constructor);*/
+      /*function objectcreate(obj){
+          if(Object.create){
+              return Object.create(obj);
+          }
+          else{
+              objectcreate=function(obj){
+                  function p(){};
+                  p.prototype=obj;
+                  return new p();
+              }
+          }
+      }
+      p={name:123};
+      var p1=objectcreate(p);
+   console.log(p1.__proto__===p);
+   var d={};*/
+   /*function objectcreate(obj){
+       var n={};
+       n.prototype=obj;
+       return n;
+   };
+   var p={name:123};
+   var n1=objectcreate(p);*/
+   /*function objectcreate(obj){
+       if(Object.create(){
+           return Object.create(obj);
+       }
+       else{
+           function n(){};
+           n.prototype=obj;
+           var n1=new n();
+           return n1;
+
+       }
+   }
+
+var arr=objectcreate([]);*/
+/*function foo(){};
+var foo1=new Function();
+foo1();*/
+  /* function foo(){alert("hello");};
+   var foo1=new Function('alert("hello")');
+   foo1();*/
+   /*function foo(num1,num2){console.log(num1+'+'+num2);};
+   foo(1,3)//1+3
+   var foo1=new Function("num1","num2","console.log(num1+'+'+num2)");
+   foo1('1','3');//foo1(1,3);两种参数写法结果一样都是1+3*/
+      //返回三个参数中的最大值1
+      /*function max(a,b,c){
+          var max=a>b?a:b;
+          max=max>c?max:c;
+          return max;
+      }
+      console.log(max(1,5,12));*/
+      //2
+     /* var max=new Function('a','b','c',' var max=a>b?a:b;max=max>c?max:c;return max;');
+      console.log(max(1,5,12));*/
+   //3
+   /*var max=new Function('a','b','c',
+           ' var max=a>b?a:b;'+
+           'max=max>c?max:c;'+
+           'return max;');
+   console.log(max(1,5,12));*/
+   /*var txt=document.getElementById("code").firstChild.nodeValue;
+    var max=new Function('a','b','c',txt);
+    console.log(max(1,5,12));*/
+      //4
+   /*var max=new Function('a','b','c',
+           `
+   var max=a>b?a:b;
+   max=max>c?max:c;
+   return max;
+           `);
+   console.log(max(1,5,12));*/
+      /*function foo(a,b){
+          for(var i=0;i<arguments.length;i++){
+          console.log(arguments[i]);
+          }
+      }
+      foo(1,2,3,4,5,6);*/
+      //从任意个参数中打印出其最大的数
+      /*function maxall(){
+          var args=arguments;
+          var max=args[0];
+          for(var i=0;i<args.length;i++){
+              if(max<args[i]){
+                  max=args[i];
+              }
+          }
+          return max;
+      }
+      console.log(maxall(1,15,25,30,2));*/
+      //计算任意个参数的总和
+   /*   function sumall(){
+              var args=arguments;
+          var sum=0;
+   for(var i=0;i<args.length;i++){
+       sum+=args[i];
+   }
+          return sum;
+       }*/
+   //另一种写法
+  /* var sumall=new Function( `
+   var args=arguments;
+   var sum=0;
+   for(var i=0;i<args.length;i++){
+       sum+=args[i];
+   }
+   return sum;
+   ` );
+   console.log(sumall(1,2,3));*/
+   /*var v = "hello";
+   function test (){
+       console.log(v);
+       var v = "world";//var v;(被调到函数前面先执行）      v="hello";（还是在console.log后面才执行）
+   }*/
+  /* var sum; //变量声明
+   sum = 10; //变量赋值
+   function fn(){
+       //局部变量
+       var sum=0;
+   }*/
+ /*  var a=0;
+   function test() {
+       console.log(a);
+       var a = "1";
+       var b = "2";
+       var c = "3";
+   }
+test();*/
+   //console.log(sum)
+ /*  var sum =0;
+   var a = 10;
+   all1 = 1000;
+   function test() {
+       //这个时候由于变量声明提升，a变量已经声明，并且值是undefined
+       var a =1;
+       console.log(a);
+       all2 = 200;
+       //foo是一个函数，解析的时候会提升，所以能够访问到
+       console.log(foo());
+       /!*如果省略下面这句 输出结果是什么*!/
+
+       function foo() {
+           return 2;
+       }
+   }
+   test();*/
+  /* var v = "hello";
+   function test (){
+       var v = "world";
+       console.log(v);
+    v = "world";
+       //var v;(被调到函数前面先执行）      v="hello";（还是在console.log后面才执行）
+   }
+   test();*/
+  /* var a=1;
+   var b='1';
+  /!* console.log(a==b);
+   console.log(a===b);*!/
+   if(a===b){
+       alert('===一样')  //一样
+   }*/
+ /*  var a=(x=z=5,5*2 )/!*整个表达式为逗号表达式，它的值为10，x和z的值都为5*!/
+   console.log(x)
+   console.log(z)
+   console.log(a)*/
+     /* document.write("123");
+      var p=document.createElement("p");
+      document.getElementsByTagName("body")[0].appendChild(p);
+   //Object.prototype.write="123";
+   console.log(p.write);*/
+  /* var xiaowang='7000';
+   //字符串
+   var xiaoli='10000';
+
+   100007000
+   //9000
+   //数据类型转换
+   alert(parseInt(xiaowang)+parseInt(xiaoli));
+   //数据类型转换..
+   //parseInt
+   //检测数据类型
+   alert(typeof(xiaowang))*/
+
+  /* myString="JavaScript";
+   console.log(myString.substring(4,3));*/
+   /*var myList=new Array("jpg","bmp","gif","ico","png");
+   var imgString=myList.join("|");//结果是jpg|bmp|gif|ico|png
+   console.log(imgString)*/
+   /*function addSpace(str){
+       return str.split('').join(' ');
+   };
+
+   var str = 'hello world'
+   console.log(addSpace(str))*/
+  /* var a=12.52;
+   b=10.35;
+   c=Math.round(a);
+   d=Math.round(b);
+   document.write(c+' '+d)*/
+   //    先思考思路：
+   //    先split，然后从第二个开始遍历，针对每次遍历作如下事情：获取第一个字符变为大写，其余变为小写
+   /*function combo(msg){
+       var arr=msg.split("-");//[get,element,by,id]
+       for(var i=1;i<arr.length;i++){
+           arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substr(1,arr[i].length-1);//substr(startindex,endindex)
+       }
+       msg=arr.join("");
+       return msg;*/
+ /*  }*/
+   /*//    使用substring改造
+   function combo2(msg){
+       var arr=msg.split("-");//[get,element,by,id]
+       for(var i=1;i<arr.length;i++){
+           arr[i]=arr[i].charAt(0).toUpperCase()+arr[i].substring(1,arr[i].length);
+       }
+       msg=arr.join("");
+       return msg;
+   }*/
+
+
+   /*str='get-element-by-id'
+   console.log(combo(str))*/
+   var student = new Object();
+   student.name = "Lanny";
+   student.age = "25";
+   student.location = "China";
+   var json = JSON.stringify(student);
+   alert(json);
+  </script>
+ </body>
+</html>

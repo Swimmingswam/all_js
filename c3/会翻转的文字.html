@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{font:5rem "微软雅黑"; padding: 200px;}
+        .hw{margin:0.6rem;color:#369; position: relative;}
+        .hw::after,.hw::before{
+            content:attr(data-c);
+            position:absolute;
+            top:0;
+            left:0;
+            transform-origin:left;
+            transition:all 0.3s ease 0s;
+        }
+        .hw::before{
+            color:lightblue;
+            opacity: 0.8;
+            transform: rotateY(-15deg);
+            z-index: 3;
+        }
+        .hw::after{
+            color:rgba(0,0,0,0.3);
+            transform:scale(1.1,1);
+            z-index: 2;
+        }
+        .hw:hover:before{
+            transform: rotateY(-40deg) skew(0deg,1deg);
+        }
+        .hw:hover:after{
+            transform:scale(1.1,1) rotateY(-40deg) skew(0deg,20deg);
+        }
+    </style>
+</head>
+<body>
+    <span class="hw" data-c="H">H</span>
+    <span class="hw" data-c="e">e</span>
+    <span class="hw" data-c="l">l</span>
+    <span class="hw" data-c="l">l</span>
+    <span class="hw" data-c="o">o</span>
+    <span class="hw" data-c=""> </span>
+    <span class="hw" data-c=""> </span>
+    <span class="hw" data-c=""> </span>
+    <span class="hw" data-c="W">W</span>
+    <span class="hw" data-c="r">r</span>
+    <span class="hw" data-c="o">o</span>
+    <span class="hw" data-c="l">l</span>
+    <span class="hw" data-c="d">d</span>
+</body>
+</html>

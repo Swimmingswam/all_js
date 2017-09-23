@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .beijing{
+            background-color:pink;
+        }
+        #all{
+            width:420px;
+            margin:10px;
+            border:1px solid #ccc;
+        }
+        #all .box{
+            background-color: red;
+           height:420px;
+            width:100%;
+            display:none;
+        }
+    </style>
+    <script>
+        window.onload=function() {
+            var btns = document.getElementsByTagName("button");
+            var divs=document.getElementById("all").getElementsByTagName("div");
+            for(var i=0;i<btns.length;i++){
+                btns[i].xuhao=i;
+                btns[i].onclick=function(){
+
+                    for(var i=0;i<btns.length;i++)
+                    {
+                        btns[i].className="";
+                    }
+                    this.className="beijing";
+
+                    for(var i=0;i<btns.length;i++){
+                        divs[i].style.display="none";
+                    }
+                    divs[this.xuhao].style.display="block";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="all">
+<button>one</button>
+<button>two</button>
+<button>three</button>
+<button>four</button>
+<button>five</button>
+<button>six</button>
+<button>seven</button>
+<button>eight</button>
+    <div class="box" style="display:block">1号盒子</div>
+    <div class="box">2号盒子</div>
+    <div class="box">3号盒子</div>
+    <div class="box">4号盒子</div>
+    <div class="box">5号盒子</div>
+    <div class="box">6号盒子</div>
+    <div class="box">7号盒子</div>
+    <div class="box">8号盒子</div>
+</div>
+</body>
+</html>

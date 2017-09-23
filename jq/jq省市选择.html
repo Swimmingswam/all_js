@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./jquery.js"></script>
+    <script>
+        var citys={
+            "中山":["石歧","小榄","坦洲","古镇","东升","火炬开发区","沙溪","横栏","四门","三乡"],
+            "广州":["南沙","番禺","花都","海珠","白云","增城"],
+            "深圳":["福田"],
+            "佛山":["禅城","南海","顺德"]
+        }
+        $(function(){
+            $.each(citys,function(keypro,cityArray){
+                var $pro=$("<option>"+keypro+"</option>");
+                $("#city").append($pro);
+            });
+            $("#city").on("change",function(){
+                var cityName=$("#city option:selected").text();
+                var districts=citys[cityName];
+                $("#district").empty();
+                $.each(districts,function(i,value){
+                    var $district=$("<option>"+value+"</option>");
+                    $("#district").append($district);
+                });
+            });
+            //$("#city").triggerHandler("change");
+            //$("#city").trigger("change");28、29、30三选一完成初始化city和district值
+            $("#city").change();
+        })
+    </script>
+</head>
+<body>
+省份：<select name="province" id="province">
+    <option value="">广东</option>
+</select>
+城市：<select name="city" id="city"></select>
+地区：<select name="district" id="district"></select>
+</body>
+</html>

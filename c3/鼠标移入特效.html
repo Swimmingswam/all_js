@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            margin:100px auto;
+            padding:0px;
+           /* display:flex;*/
+           /* flex-wrap: wrap;
+            justify-content: space-between;*/
+            width: 950px;
+            height: 620px;
+            /*align-content: space-around;*/
+        }
+        .item{
+            margin:10px;
+            width: 280px;
+            height: 180px;
+            background-color: pink;
+            overflow: hidden;
+            float:left;
+            position: relative;
+            border-radius: 10px;
+        }
+        .item div{
+            position: absolute;
+            top:0px;
+            left:0px;
+            transform: rotate(-100deg);
+            transform-origin:top left;
+            transition: transform 1s;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .current div{
+            transform: rotate(0deg);
+        }
+        .item div.top{
+            transform-origin:top left;
+        }
+        .item div.right{
+            transform-origin:top right;
+        }
+        .item div.bottom{
+            transform-origin:bottom right;
+        }
+        .item div.left{
+            transform-origin:bottom left;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="1.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="2.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="3.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="2.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="3.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="1.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="3.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="2.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="item">
+        <img src="./yiru.jpg" alt=""/>
+        <div>
+            <img src="1.jpg" alt=""/>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../jquery-1.11.2.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".item").on("mouseenter mouseleave",function(e) {
+            var that=$(this);
+            var w = $(this).width(); // 得到盒子宽度
+            var h = $(this).height();// 得到盒子高度
+            var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
+            // 获取x值
+            var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+            // 获取y值
+            var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; //direction的值为“0,1,2,3”分别对应着“上，右，下，左”
+            // 将点的坐标对应的弧度值换算成角度度数值          0上 1右 2下 3左
+            //var dirName = new Array('上方','右侧','下方','左侧');
+            if(e.type == 'mouseenter'){
+               switch (direction){
+                   case 0:
+                       comeon("top");
+                       break;
+                   case 1:
+                       comeon("right");
+                       break;
+                   case 2:
+                       comeon("bottom");
+                       break;
+                   case 3:
+                       comeon("left");
+                       break;
+               }
+            }else{
+                switch (direction){
+                    case 0:
+                        comeout("top");
+                        break;
+                    case 1:
+                        comeout("right");
+                        break;
+                    case 2:
+                        comeout("bottom");
+                        break;
+                    case 3:
+                        comeout("left");
+                        break;
+                }
+            }
+            function comeon(str){
+                that.addClass("current");
+                that.children("div").removeClass().addClass(str);
+            };
+            function comeout(str){
+                that.removeClass("current");
+                that.children("div").removeClass().addClass(str);
+            };
+        });
+    })
+</script>
+
+</html>

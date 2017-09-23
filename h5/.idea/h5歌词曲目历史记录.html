@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html,body{
+            height:100%;
+            margin:0px;
+            padding:0px;
+            overflow: hidden;
+            background-color: #caa;
+        }
+        aside{
+            float:left;
+            background-color:#ccc;
+            width: 220px;
+            height:100%;
+        }
+        aside li{
+            margin:5px;
+            padding:10px;
+            background-color: #f5f5f5;
+            front:35px "微软雅黑";
+            line-height: 35px;
+        }
+        article{
+            margin-left:220px;
+            background-color: lightblue;
+            height:100%;
+            padding:20px;
+            overflow:scroll;
+        }
+    </style>
+</head>
+<body>
+    <aside class="left">
+        <ul class="list">
+            <!--<li class.item>燃点</li>
+            <li class.item>替我照顾她</li>
+            <li class.item>学着走</li>-->
+        </ul>
+    </aside>
+    <article>
+        <p class="right"></p>
+    </article>
+    <script>
+        var data={
+            "燃点":'心感受着零度的寂寞 \n <br />'+
+                    '无法去倒数过了多久  \n <br />'+
+                    '我总是陪伴一个人的我  \n <br />'+
+                    '在不被允许的规则中  \n <br />'+
+                    '情绪像冰和火在交错  \n <br />'+
+                    '只想为你不顾一切温柔  \n <br />'+
+                    '火柴划过瞬间  \n <br />'+
+                    '烙下爱的燃点  \n <br />'+
+                    '彷佛你和我都不愿再后退  \n <br />'+
+                    '就算灼伤  \n <br />'+
+                    '缺氧的呼吸也眷恋  \n <br />'+
+                    '爱你绝不退怯  \n <br />'+
+                    '即便永远太远  \n <br />'+
+                    '让我带你逃离现实的氛围  \n <br />'+
+                    '紫色火花 \n <br />'+
+                    '是我们爱情的燃点  \n <br />'+
+                    '这爱多美',
+            "替我照顾她":'我知道你的嘴角笑起来并不快乐  \n <br />'+
+                         ' 也知道你是一个负责任的滥好人  \n <br />'+
+                         '但心是肉做的 我又怎么舍得 \n <br />'+
+                         '看你哭到都累了 还倔强撑着  \n <br />'+
+                         '我知道维系一段感情是不容易的  \n <br />'+
+                         '也知道缘份早就注定了你的人生  \n <br />'+
+                         '这些年自负了 终究会明白的  \n <br />'+
+                         '学会放开了手才是懂爱的人  \n <br />'+
+                         '就替我照顾她  \n <br />'+
+                         '你能给她我给不了她的翅膀 \n <br />'+
+                         '今后的幸福就是属于你们俩  \n <br />'+
+                         '别牵挂 别让泪落下 \n <br />'+
+                         '就替我爱着她  \n <br />'+
+                         '我可以假装自己其实很大方 \n <br />'+
+                         '成全自己最深爱的人  \n <br />'+
+                         '不害怕 只是受了一点伤  \n <br />'+
+                         '流点泪才会长大',
+            "学着走":'你那时的温柔 变成此刻的狂风 \n <br />'+
+                     '伤卷进胸口 好痛 \n <br />'+
+                     '你最后的笑容 绽放过后迎来寒冬 \n <br />'+
+                     '背影揉进眼眸 散成恶梦 \n <br />'+
+                     '回忆像荒芜的乐园 欢笑声逃出从前 \n <br />'+
+                     '海盗船废 摩天轮斜 木马不旋 \n <br />'+
+                     '离开痛 学着走 \n <br />'+
+                     '往事太重我再也背不动 \n <br />'+
+                     '不能逗留 人越是回头 \n <br />'+
+                     '越有漩涡 越往上游 越向下落 \n <br />'+
+                     '想小时候 学着走 \n <br />'+
+                     '第一步总是担心害怕和惶恐 \n <br />'+
+                     '时间会伸出双手 抱住我别难过 \n <br />'+
+                     '泪水中找彩虹要勇敢的像孩童 \n <br />'+
+                     '心是个垃圾掩埋场 收集着件件破烂 \n <br />'+
+                     '半个永远 断句誓言 情感碎片 \n <br />'+
+                     '离开痛 学着走 \n <br />'+
+                     '往事太重我再也背不动 \n <br />'+
+                     '不能逗留 人越是回头 \n <br />'+
+                     '越有漩涡 越往上游 越向下落 '
+        };
+        (function(){
+            var list=document.querySelector(".list");
+            var song=document.querySelector(".right");
+            for(var title in data){
+                var li=document.createElement("li");
+                li.innerHTML=title;
+                li.setAttribute("data-title",title);
+                list.appendChild(li);
+            }
+            var lis=document.querySelectorAll("li");
+            for(var i=0;i<lis.length;i++){
+            lis[i].addEventListener("click",function(e){
+                var title=this.dataset["title"];
+                song.innerHTML=data[title];
+                if(window.history&&history.pushState){
+                    history.pushState(title,"00","?huxia="+title);
+                }else{
+                    console.log("不支持");
+                }
+            })
+            }
+            window.addEventListener("popstate",function(e){
+                song.innerHTML=data[e.state];
+            })
+            var title=window.location.search.split("=")[1];
+            if(title){
+                console.log(decodeURI(title));
+                song.innerHTML=data[decodeURI(title)];
+            }
+        })()
+    </script>
+</body>
+</html>

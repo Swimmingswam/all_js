@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            text-align: center;
+            margin-top:250px;
+        }
+        #clock{
+            border:5px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<!--<p>现在是<span id="hour"></span></p>-->
+<div>
+<canvas id="clock" width="100" height="100"></canvas>
+</div>
+</body>
+<script>
+    var clock=document.getElementById("clock");
+    var cxt=clock.getContext("2d");
+    var r=cxt.canvas.width/2;
+    var em=cxt.canvas.width/200;
+    //画外圆框
+    function backpath(){
+        cxt.save();
+        cxt.translate(r,r);//吧圆心定义坐标为（0,0）
+        cxt.lineWidth=10*em;
+        cxt.beginPath();//路径开始
+        cxt.arc(0,0,r-cxt.lineWidth/2,0,2*Math.PI,false);//画圆外框
+        cxt.stroke();//路径结束
+
+        //12个小时点圈
+        var hoursnumber=[3,4,5,6,7,8,9,10,11,12,1,2];
+        cxt.font=18*em+"px Aral";
+        cxt.textAlign="center";
+        cxt.textBaseline="middle";
+        for(var i=0;i<hoursnumber.length;i++){
+            var rad=2*Math.PI/12*i;
+            var x=Math.cos(rad)*(r-30*em);
+            var y=Math.sin(rad)*(r-30*em);
+            cxt.fillText(hoursnumber[i],x,y);
+        }
+
+        //60个分秒小点圈
+        for(var j=0;j<60;j++){
+            var rad=2*Math.PI/60*j;
+            var x=Math.cos(rad)*(r-18*em);
+            var y=Math.sin(rad)*(r-18*em);
+            cxt.beginPath();
+            if(j%5===0){
+                //小时点
+                cxt.fillStyle="#000";
+                cxt.arc(x,y,2*em,0,2*Math.PI,false);
+            }else{
+                //分秒点
+                cxt.fillStyle="#ccc";
+                cxt.arc(x,y,2*em,0,2*Math.PI,false);
+            }
+            cxt.fill();
+        }
+
+    }
+    //画时针
+    function hour(hours,minutes){
+        cxt.save();
+        cxt.beginPath();
+        var rad=2*Math.PI/12*hours;
+        var rad_m=2*Math.PI/12/60*minutes;
+        cxt.rotate(rad+rad_m);//时针画布的旋转
+        cxt.lineWidth=6*em;//时针粗细
+        cxt.lineCap="round";//时针两端样式
+        cxt.moveTo(0,10);
+        cxt.lineTo(0,-r/2);
+        cxt.stroke();
+        cxt.restore();
+    }
+    //画分针
+    function minute(minutes){
+        cxt.save();
+        cxt.beginPath();
+        var rad=2*Math.PI/60*minutes;
+        cxt.rotate(rad);//时针画布的旋转
+        cxt.lineWidth=3;//时针粗细
+        cxt.lineCap="round";//时针两端样式
+        cxt.moveTo(0,10);
+        cxt.lineTo(0,-r+30*em);
+        cxt.stroke();
+        cxt.restore();
+    }
+    //画秒针
+    function second(seconds){
+        cxt.save();
+        cxt.beginPath();
+        cxt.fillStyle="#c14543";
+        var rad=2*Math.PI/60*seconds;
+        cxt.rotate(rad);//时针画布的旋转
+        cxt.moveTo(-2,20);
+        cxt.lineTo(2,20);
+        cxt.lineTo(1,-r+18*em);
+        cxt.lineTo(-1,-r+18*em);
+        cxt.fill()
+        cxt.restore();
+    }
+
+    //画中间点
+    function dot(){
+        cxt.beginPath();
+        cxt.fillStyle="#fff";
+        cxt.arc(0,0,3*em,0,2*Math.PI,false);
+        cxt.fill();
+    }
+
+
+
+
+    //时针启动
+    function draw(){
+            cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+            var time=new Date();
+            var h=time.getHours();
+            var m=time.getMinutes();
+            var s=time.getSeconds();
+            backpath();
+            hour(h,m);
+            minute(m);
+            second(s);
+            dot();
+            cxt.restore();
+       /* var result=document.getElementById("hour");
+        result.innerHTML+=h+"时";
+        result.innerHTML+=m+"分";
+        result.innerHTML+=s+"秒";*/
+
+
+    }
+    draw();
+    var times=setInterval(draw,1000);
+
+
+</script>
+</html>

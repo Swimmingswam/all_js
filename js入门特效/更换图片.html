@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+   #demo{
+   width:290px;
+   height:184px;
+   border:2px;
+   padding:5px;
+   margin:30px 40%;
+   }
+   .xuhao{
+    position:absolute;
+    top:200px;
+    left:660px;
+   }
+   .one{
+    font-size:15px;
+	display:inline-block;
+	float:left;
+	width:25px;
+	height:25px;
+	line-height:25px;
+	margin:3px;
+	}
+</style>
+ </head>
+ <body>
+  <img src="./images/148972260233130128.jpg" id="demo">
+  <div class="xuhao">
+    <div class="one" id="one"><strong>1</strong></div>
+    <div class="one" id="two"><strong>2</strong></div>
+    <div class="one" id="three"><strong>3</strong></div>
+  </div>
+  <script>
+   var one= document.getElementById("one");
+   var two= document.getElementById("two");
+   var three = document.getElementById("three");
+
+    one.onmouseover = function(){
+	  demo.src="./images/148972286370958521.jpg";
+	}
+	two.onmouseover = function(){
+	  demo.src="./images/148973161922274417.jpg";
+	}
+	three.onmouseover = function(){
+	  demo.src="./images/148974061577356798.jpg";
+	}
+	one.onmouseout= function(){
+	  demo.src="./images/148972260233130128.jpg";
+	}
+	two.onmouseout= function(){
+	  demo.src="./images/148972260233130128.jpg";
+	}
+	three.onmouseout= function(){
+	  demo.src="./images/148972260233130128.jpg";
+	}
+	</script>
+ </body>
+</html>
