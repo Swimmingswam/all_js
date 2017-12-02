@@ -1,0 +1,55 @@
+
+body, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style-type:none;
+}
+body {
+    font-family:"Times New Roman", Times, serif;
+}
+#box {
+    position:relative;
+    width:492px;
+    height:172px;
+    margin:10px auto;
+}
+#box .imgList{
+    position:relative;
+    width:490px;
+    height:170px;
+    overflow:hidden;
+}
+#box .imgList li{
+    position:absolute;
+    top:0;
+    left:0;
+    width:490px;
+    height:170px;
+}
+#box .countNum{
+    position:absolute;
+    right:0;
+    bottom:5px;
+}
+#box .countNum li{
+    width:20px;
+    height:20px;
+    float:left;
+    color:#fff;
+    border-radius:20px;
+    background:#f90;
+    text-align:center;
+    margin-right:5px;
+    cursor:pointer;
+    opacity:0.7;
+    filter:alpha(opacity=70);
+}
+#box .countNum li.current{
+    background:#f60;
+    font-weight:bold;
+    opacity:1;
+    filter:alpha(opacity=70);
+}
+
