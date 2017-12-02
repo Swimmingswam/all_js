@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+</head>
+<style>
+    .active{
+        background-color:red;
+        }
+</style>
+<body>  
+    <div id="app">
+           <input type="text" v-model="title" @keyup="inputing" @keydown.down="listdown()"  @keydown.up="listup()">
+           <ul>
+            <li v-for="value in searchData" :class="{active:$index==nowindex}">{{value}}</li>
+        </ul>
+        <p v-show="!searchData.length">暂无数据。。。</p>
+    </div>
+</body>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            searchData:[],
+            title:"",
+            nowindex:-1
+        },
+        methods:{
+            inputing:function(){
+                this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+                    wd:this.title
+                },{
+                    jsonp:'cb'
+                }).then(function(res){
+                        this.searchData=res.data.s
+                    },function(err){
+                        console.log(err)
+                    })
+            },
+            listdown:function(){
+                this.nowindex++;
+                if(this.nowindex==this.searchData.length){
+                    return this.nowindex=-1
+                }
+                this.title=this.searchData[this.nowindex];
+            
+            },
+            listup:function(){
+                this.nowindex--;
+                if(this.nowindex==-2){
+                   return this.nowindex=this.searchData.length-1
+                }
+                this.title=this.searchData[this.nowindex];
+               
+            }
+        }
+       
+    })
+</script>

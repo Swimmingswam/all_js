@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+    <style>
+
+    </style>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <body>
+        <input type="text" v-model="word">
+        <button @click="get()">click me</button>
+    </body>
+    <script>
+    var vm=new Vue({
+        el:"body",
+        data:{
+            word:""
+        },
+        methods:{
+          get:function(){
+              this.$http.jsonp("https://sug.so.360.cn/suggest",{
+                  word:this.word
+              }).then(function(res){
+                  alert(res.data.s)
+              },function(res){
+                  alert(res.status)
+              })
+          }
+        }
+    })
+    </script>
+    </html>

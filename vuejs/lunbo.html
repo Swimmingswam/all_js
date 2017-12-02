@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .red{
+       color:red;
+    }
+    </style>
+</head>
+<body>  
+    <div id="app">
+           <div class="image" @mouseover="clearInv" @mouseout="runInv">
+               <image :src="datalist[index].src"></image>
+               <transition name="slide-trans">
+                    <img v-if="isShow" :src="datalist[index].src">
+                  </transition>
+           </div> 
+           <div class="ul">
+               <li @click="goto(pre)"><</li>
+               <li v-for="item in datalist" @click="goto($index)" :class="{red:$index===this.index}">{{$index+1}}</li>
+               <li @click="goto(next)">></li>
+           </div>  
+    </div>
+</body>
+<script src="http://webapp.didistatic.com/static/webapp/shield/z/vue/vue/1.0.24/vue.min.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            index:0,
+            isShow:true,
+          datalist:[
+        {
+          src:'./assets/slideShow/pic1.jpg',
+          href: 'detail/analysis'
+        },
+        {
+          src:'./assets/slideShow/pic2.jpg',
+          href: 'detail/count'
+        },
+        {
+          src:'./assets/slideShow/pic3.jpg',
+          href: 'http://xxx.xxx.com'
+        },
+        {
+          src:'./assets/slideShow/pic4.jpg',
+          href: 'detail/forecast'
+        }
+            ]
+        },
+        computed:{
+            pre:function(){
+                if (this.index === 0) {
+                    return this.datalist.length - 1
+                }else {
+                   return this.index - 1
+                } 
+            },
+            next:function(){
+                if (this.index === this.datalist.length - 1) {
+                     return 0
+                }
+                else {
+                   return this.index + 1
+                }
+            }
+        },
+        methods:{
+           goto(i){
+            this.index=i;
+           },
+           runInv () {
+            this.invId = setInterval(() => {
+            this.goto(this.next)
+           }, 1000)
+          },
+          clearInv () {
+            clearInterval(this.invId)
+           }
+        },
+        created:function(){
+            this.runInv()
+        }
+    })
+</script>
+<style>
+    .slide-trans-enter-active {
+  transition: all .5s;
+}
+.slide-trans-enter {
+  transform: translateX(900px);
+}
+.slide-trans-old-leave-active {
+  transition: all .5s;
+  transform: translateX(-900px);
+}
+</style>
+</html>

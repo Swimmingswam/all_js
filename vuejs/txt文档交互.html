@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+</head>
+<style>
+    .active{
+        background-color:red;
+        }
+</style>
+<body>  
+    <button @click="sayhello()">hello vue</button>
+</body>
+<script>
+    var vm=new Vue({
+        el:"body",
+        data:{
+            
+        },
+        methods:{
+            sayhello:function(){
+               this.$http.get("a.txt").then(function(res){
+                   alert(res.data)
+               },function(err){
+                   alert(err.data)
+               })
+            }
+        }
+    })
+</script>
